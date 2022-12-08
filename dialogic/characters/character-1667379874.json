@@ -1,0 +1,25 @@
+{
+	"color": "#ffab2d2d",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1667379874.json",
+	"mirror_portraits": false,
+	"name": "TestPers1",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": 0,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://Sprites/no_talk.png"
+		},
+		{
+			"name": "no_talk_portrait",
+			"path": "res://Sprites/no_talk_portrait.png"
+		}
+	],
+	"scale": 130,
+	"theme": ""
+}

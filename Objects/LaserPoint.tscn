@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/laser_point.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/LaserPoint.cs" type="Script" id=2]
+[ext_resource path="res://Objects/Spawnables/smoke.tscn" type="PackedScene" id=3]
+
+[node name="LaserPoint" type="Sprite"]
+texture = ExtResource( 1 )
+offset = Vector2( 8, -16 )
+script = ExtResource( 2 )
+
+[node name="laser" type="RayCast2D" parent="."]
+position = Vector2( 13, -16 )
+enabled = true
+cast_to = Vector2( 19, 0 )
+collision_mask = 31
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 0, -16 )
+points = PoolVector2Array( 13, 0 )
+width = 4.0
+default_color = Color( 0.827451, 0, 0, 1 )
+
+[node name="smoke" parent="." instance=ExtResource( 3 )]
+position = Vector2( 32, -16 )
+rotation = -1.57079
+
+[node name="OnOffTimer" type="Timer" parent="."]
+one_shot = true

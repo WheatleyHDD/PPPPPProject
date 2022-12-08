@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[node name="Test" type="Node2D"]
+
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 640, 857.063 )
+scale = Vector2( 23.2344, 8.78321 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Icon"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Icon/StaticBody2D"]
+polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
+
+[node name="Icon2" type="Sprite" parent="."]
+position = Vector2( 560, 272 )
+scale = Vector2( 2.5, 8.5 )
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Icon2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Icon2/StaticBody2D"]
+polygon = PoolVector2Array( 32, -32, 32, 32, -32, 32, -32, -32, 31, -32 )
