@@ -23,5 +23,11 @@ public class CheckPoint : Area2D
         if (!body.IsInGroup("player")) return;
         var p = body as PlayerBase;
         p.SavePosition();
+        var rng = new RandomNumberGenerator();
+        rng.Randomize();
+        GetNode<Node2D>("Text").RotationDegrees = rng.RandfRange(-45, 45);
+        GetNode<AnimationPlayer>("Text/AnimationPlayer").Play("fly_and_fade");
+        GetNode<AnimationPlayer>("AnimationPlayer").Play("picked");
+        GetNode<AudioStreamPlayer2D>("Picked").Play();
     }
 }

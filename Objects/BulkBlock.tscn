@@ -29,3 +29,7 @@ collision_mask = 31
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BulkArea"]
 position = Vector2( 16, -2 )
 shape = SubResource( 2 )
+
+[node name="Crumble" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 16, 16 )
+bus = "sound"

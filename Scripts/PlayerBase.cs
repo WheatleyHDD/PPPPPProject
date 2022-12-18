@@ -33,6 +33,12 @@ public class PlayerBase : KinematicBody2D
 
     public CameraMovement cam;
 
+    private AudioStreamPlayer2D jump_player;
+    private AnimationPlayer base_animator;
+    private Listener2D listener;
+    private AudioStreamPlayer2D land_player;
+    private AudioStreamPlayer2D hit_player;
+
     public Array<Toggle> interacted_items = new Array<Toggle>();
 
     // Сигналы
@@ -42,6 +48,11 @@ public class PlayerBase : KinematicBody2D
     public override void _Ready()
     {
         SavePosition();
+        jump_player = GetNode<AudioStreamPlayer2D>("Jump");
+        base_animator = GetNode<AnimationPlayer>("BaseAnimator");
+        listener = GetNode<Listener2D>("Listener2D");
+        land_player = GetNode<AudioStreamPlayer2D>("Land");
+        hit_player = GetNode<AudioStreamPlayer2D>("Hit");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -55,6 +66,9 @@ public class PlayerBase : KinematicBody2D
     {
         // Получаем последний поворот
         if (h_move != 0) last_dir = (int)(h_move / Mathf.Abs(h_move));
+
+        if (current) listener.MakeCurrent();
+        else listener.ClearCurrent();
     }
 
     void HorizontalMovement(float delta)
@@ -77,26 +91,30 @@ public class PlayerBase : KinematicBody2D
         SetSnapNormal(Vector2.Down);
         if (!IsOnFloorNew()) SetSnapNormal(Vector2.Zero);
 
-        if (current) {
-            if (IsOnFloorNew()){
-                // Ставим дефолтные значения при приземлении
-                if (jumping)
-                    GetNode<AnimationPlayer>("BaseAnimator").Play("land");
-                jumping = false;
-                being_on_floor = true;
-                jump_count = 0;
-            } else if (being_on_floor && !jumping) {
-                // Убираем один прыжок, если спрыгнули с платформы
-                being_on_floor = false;
-                jump_count += 1;
+        if (IsOnFloorNew()){
+            // Ставим дефолтные значения при приземлении
+            if (jumping) {
+                base_animator.Play("land");
+                land_player.Play();
             }
+            jumping = false;
+            being_on_floor = true;
+            jump_count = 0;
+        } else if (being_on_floor && !jumping) {
+            // Убираем один прыжок, если спрыгнули с платформы
+            being_on_floor = false;
+            jump_count += 1;
+        }
 
+        if (current) {
             // Сам прыжок
             if (btn_is_jump_pressed && jump_count < max_jump_count){
                 jump_count += 1;
                 jumping = true;
                 jump_released = false;
-                GetNode<AnimationPlayer>("BaseAnimator").Play("jump");
+                base_animator.Play("jump");
+                jump_player.PitchScale = Mathf.Min(jump_count, 1.25f);
+                jump_player.Play();
                 velocity.y = -jump_height * gravity_dir;
                 EmitSignal("OnJump", jump_count);
             }
@@ -113,7 +131,7 @@ public class PlayerBase : KinematicBody2D
     }
 
     public void Die() {
-        // GD.Print("Персонаж ", Name, " помер");
+        hit_player.Play();
         cam.Shake(12, 0.2f);
         velocity = Vector2.Zero;
         RestoreAll();

@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Sprites/player_base.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/PlayerBase.cs" type="Script" id=2]
+[ext_resource path="res://Sounds/Jump.wav" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/Land.wav" type="AudioStream" id=4]
+[ext_resource path="res://Sounds/hit.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 12, 30 )
@@ -67,7 +70,21 @@ position = Vector2( 0, 32 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -32 )
 
+[node name="Listener2D" type="Listener2D" parent="."]
+
 [node name="BaseAnimator" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/jump = SubResource( 3 )
 anims/land = SubResource( 4 )
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+bus = "sound"
+
+[node name="Hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )
+bus = "sound"
+
+[node name="Land" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+bus = "sound"

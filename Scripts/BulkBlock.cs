@@ -22,7 +22,7 @@ public class BulkBlock : StaticBody2D
 
         bulk = true;
         var tween = GetTree().CreateTween();
-        tween.TweenInterval(0.5f);
+        tween.TweenInterval(0.25f);
         tween.TweenProperty(GetNode<Sprite>("BulkBlock"), "modulate:a", 0f, 0.1f);
         tween.TweenCallback(this, "SetBulked", new Godot.Collections.Array(true));
         tween.TweenInterval(3f);
@@ -33,5 +33,11 @@ public class BulkBlock : StaticBody2D
     void SetBulked(bool bulked) {
         GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", bulked);
         bulk = bulked;
+
+        var rng = new RandomNumberGenerator();
+        rng.Randomize();
+        var sound = GD.Load("res://Sounds/Crumble/Rock_crumble_"+rng.RandiRange(0,2)+".wav") as AudioStream;
+        GetNode<AudioStreamPlayer2D>("Crumble").Stream = sound;
+        GetNode<AudioStreamPlayer2D>("Crumble").Play();
     }
 }

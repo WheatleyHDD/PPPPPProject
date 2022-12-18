@@ -6,10 +6,13 @@ public class MainCharacter : PlayerBase
     bool sliding = false;
     [Export] public float slide_speed = 1500;
 
+    private AudioStreamPlayer2D slide_sound;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         base._Ready();
+        slide_sound = GetNode<AudioStreamPlayer2D>("Slide");
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -19,6 +22,7 @@ public class MainCharacter : PlayerBase
             StopMoving();
             velocity = new Vector2(1 * last_dir, 0.5f) * slide_speed;
             sliding = true;
+            slide_sound.Play();
             GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
         }
         if (!sliding) h_move = Input.GetAxis("ui_left", "ui_right");
