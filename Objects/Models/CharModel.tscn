@@ -93,49 +93,89 @@ rest = Transform2D( 1, 0, 0, 1, 0, -20 )
 [node name="ArmL" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( 32, -29 )
 rest = Transform2D( 1, 0, 0, 1, 32, -29 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
 
 [node name="ForearmL" type="Bone2D" parent="Skeleton2D/Hip/Chest/ArmL"]
 position = Vector2( 0, 61 )
 rest = Transform2D( 1, 0, 0, 1, 0, 61 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [node name="HandL" type="Bone2D" parent="Skeleton2D/Hip/Chest/ArmL/ForearmL"]
 position = Vector2( 12, 24 )
 rotation = 1.0472
 rest = Transform2D( 0.500001, 0.866025, -0.866025, 0.500001, 12, 24 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [node name="ArmR" type="Bone2D" parent="Skeleton2D/Hip/Chest"]
 position = Vector2( -40, -28 )
 rest = Transform2D( 1, 0, 0, 1, -40, -28 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
 
 [node name="ForearmR" type="Bone2D" parent="Skeleton2D/Hip/Chest/ArmR"]
 position = Vector2( -6, 62 )
 rest = Transform2D( 1, 0, 0, 1, -6, 62 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [node name="HandR" type="Bone2D" parent="Skeleton2D/Hip/Chest/ArmR/ForearmR"]
 position = Vector2( 6, 21 )
 rotation = 1.309
 rest = Transform2D( 0.258821, 0.965925, -0.965925, 0.258821, 6, 21 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [node name="ThighL" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2( 14, 17 )
 rest = Transform2D( 1, 0, 0, 1, 14, 17 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
 
 [node name="LegL" type="Bone2D" parent="Skeleton2D/Hip/ThighL"]
 position = Vector2( 2, 54 )
 rest = Transform2D( 1, 0, 0, 1, 2, 54 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [node name="FootL" type="Bone2D" parent="Skeleton2D/Hip/ThighL/LegL"]
 position = Vector2( -1, 48 )
 rest = Transform2D( 1, 0, 0, 1, -1, 46 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [node name="ThighR" type="Bone2D" parent="Skeleton2D/Hip"]
 position = Vector2( -13, 17 )
 rest = Transform2D( 1, 0, 0, 1, -13, 17 )
+__meta__ = {
+"_edit_bone_": true,
+"_edit_ik_": true
+}
 
 [node name="LegR" type="Bone2D" parent="Skeleton2D/Hip/ThighR"]
 position = Vector2( 2, 54 )
 rest = Transform2D( 1, 0, 0, 1, 2, 54 )
+__meta__ = {
+"_edit_bone_": true
+}
 
 [node name="FootR" type="Bone2D" parent="Skeleton2D/Hip/ThighR/LegR"]
 position = Vector2( -1, 48 )
 rest = Transform2D( 1, 0, 0, 1, -1, 46 )
+__meta__ = {
+"_edit_bone_": true
+}
