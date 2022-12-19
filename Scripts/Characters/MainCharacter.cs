@@ -22,7 +22,13 @@ public class MainCharacter : PlayerBase
             StopMoving();
             velocity = new Vector2(1 * last_dir, 0.5f) * slide_speed;
             sliding = true;
+            stopped_animation = true;
             slide_sound.Play();
+            GetNode<Particles2D>("SlideEffect").GlobalPosition = GetNode<Position2D>("CharModel/Skeleton2D/Hip/ThighR/LegR/FootR/SlideParticles").GlobalPosition;
+            GetNode<Particles2D>("SlideEffect").Emitting = true;
+            GetNode<Particles2D>("SlideEffect").Scale = new Vector2(last_dir, GetNode<Particles2D>("SlideEffect").Scale.y);
+            GetNode<AnimationPlayer>("CharModel/AnimationPlayer").PlaybackSpeed = 1f;
+            GetNode<AnimationPlayer>("CharModel/AnimationPlayer").Play("slide");
             GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
         }
         if (!sliding) h_move = Input.GetAxis("ui_left", "ui_right");
@@ -35,6 +41,8 @@ public class MainCharacter : PlayerBase
                     Die();
                 GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", false);
                 sliding = false;
+                stopped_animation = false;
+                GetNode<Particles2D>("SlideEffect").Emitting = false;
             }
         }
         Animating();

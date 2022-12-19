@@ -21,6 +21,7 @@ public class PlayerBase : KinematicBody2D
     public bool current = false;
 
     // Вспомогательные переменные 
+    protected bool stopped_animation = false;
     bool jump_released = false;
     bool jumping;
     bool being_on_floor;
@@ -33,8 +34,11 @@ public class PlayerBase : KinematicBody2D
 
     public CameraMovement cam;
 
-    private AudioStreamPlayer2D jump_player;
     private AnimationPlayer base_animator;
+    private AnimationPlayer char_animator;
+    private Node2D char_model;
+
+    private AudioStreamPlayer2D jump_player;
     private Listener2D listener;
     private AudioStreamPlayer2D land_player;
     private AudioStreamPlayer2D hit_player;
@@ -50,9 +54,11 @@ public class PlayerBase : KinematicBody2D
         SavePosition();
         jump_player = GetNode<AudioStreamPlayer2D>("Jump");
         base_animator = GetNode<AnimationPlayer>("BaseAnimator");
+        char_animator = GetNode<AnimationPlayer>("CharModel/AnimationPlayer");
         listener = GetNode<Listener2D>("Listener2D");
         land_player = GetNode<AudioStreamPlayer2D>("Land");
         hit_player = GetNode<AudioStreamPlayer2D>("Hit");
+        char_model = GetNode<Node2D>("CharModel");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -64,8 +70,9 @@ public class PlayerBase : KinematicBody2D
 
     public override void _Process(float delta)
     {
+        if (!stopped_animation) Animate();
         // Получаем последний поворот
-        if (h_move != 0) last_dir = (int)(h_move / Mathf.Abs(h_move));
+        if (current & h_move != 0) last_dir = (int)(h_move / Mathf.Abs(h_move));
 
         if (current) listener.MakeCurrent();
         else listener.ClearCurrent();
@@ -151,4 +158,19 @@ public class PlayerBase : KinematicBody2D
     }
 
     public void AddToInteracted(Toggle toggle) => interacted_items.Add(toggle);
+
+    void Animate() {
+        char_model.Scale = new Vector2(last_dir * Mathf.Abs(char_model.Scale.x), char_model.Scale.y);
+        char_animator.PlaybackSpeed = 1f;
+        if (IsOnFloorNew()) {
+            if (velocity.x != 0) {
+                char_animator.PlaybackSpeed = 1.5f;
+                char_animator.Play("run");
+            }
+            else char_animator.Play("idle");
+        } else {
+            if (velocity.y < 0) char_animator.Play("jump");
+            else char_animator.Play("jump");
+        }
+    }
 }

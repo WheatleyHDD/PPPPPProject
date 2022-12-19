@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/laser_point2.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/LaserPoint.cs" type="Script" id=2]
+[ext_resource path="res://Objects/Spawnables/smoke.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/LaserPoint2.cs" type="Script" id=4]
+
+[node name="LaserPointTwo" type="Sprite"]
+texture = ExtResource( 1 )
+offset = Vector2( 8, -16 )
+script = ExtResource( 4 )
+
+[node name="Laser1" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="laser" type="RayCast2D" parent="Laser1"]
+position = Vector2( 13, -23 )
+enabled = true
+cast_to = Vector2( 19, 0 )
+collision_mask = 31
+
+[node name="Line2D" type="Line2D" parent="Laser1"]
+position = Vector2( 0, -23 )
+points = PoolVector2Array( 13, 0 )
+width = 4.0
+default_color = Color( 0.827451, 0, 0, 1 )
+
+[node name="smoke" parent="Laser1" instance=ExtResource( 3 )]
+position = Vector2( 32, -23 )
+rotation = -1.57079
+
+[node name="OnOffTimer" type="Timer" parent="Laser1"]
+one_shot = true
+
+[node name="Laser2" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="laser" type="RayCast2D" parent="Laser2"]
+position = Vector2( 13, -9 )
+enabled = true
+cast_to = Vector2( 19, 0 )
+collision_mask = 31
+
+[node name="Line2D" type="Line2D" parent="Laser2"]
+position = Vector2( 0, -9 )
+points = PoolVector2Array( 13, 0 )
+width = 4.0
+default_color = Color( 0.827451, 0, 0, 1 )
+
+[node name="smoke" parent="Laser2" instance=ExtResource( 3 )]
+position = Vector2( 32, -9 )
+rotation = -1.57079
+
+[node name="OnOffTimer" type="Timer" parent="Laser2"]
+one_shot = true

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class LaserPoint : Sprite
+public class LaserPoint : Node2D
 {
     [Export] public bool IsCasting = true;    
 

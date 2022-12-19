@@ -573,15 +573,17 @@ position = Vector2( 3616, 32 )
 rotation = 1.5708
 
 [node name="Toggle" parent="LevelObjects" instance=ExtResource( 9 )]
-position = Vector2( 768, 608 )
+position = Vector2( 768, 672 )
+rotation = -1.57079
 connected_object = [ NodePath("../LaserPoint"), NodePath("../LaserPoint2"), NodePath("../LaserPoint3"), NodePath("../LaserPoint8"), NodePath("../LaserPoint9") ]
 
 [node name="Toggle2" parent="LevelObjects" instance=ExtResource( 9 )]
-position = Vector2( 96, 448 )
+position = Vector2( 32, 448 )
 connected_object = [ NodePath("../LaserPoint4") ]
 
 [node name="Toggle3" parent="LevelObjects" instance=ExtResource( 9 )]
-position = Vector2( 848, 256 )
+position = Vector2( 848, 320 )
+rotation = -1.57079
 connected_object = [ NodePath("../LaserPoint6"), NodePath("../LaserPoint7"), NodePath("../LaserPoint10") ]
 
 [node name="CheckPoint" parent="LevelObjects" instance=ExtResource( 13 )]
@@ -706,7 +708,7 @@ position = Vector2( 4992, 640 )
 connected_object = [ NodePath("../LaserPoint23"), NodePath("../LaserPoint25") ]
 
 [node name="Toggle4" parent="LevelObjects" instance=ExtResource( 9 )]
-position = Vector2( 4224, 448 )
+position = Vector2( 4192, 448 )
 connected_object = [ NodePath("../LaserPoint22") ]
 
 [node name="Spikes" parent="LevelObjects" instance=ExtResource( 14 )]

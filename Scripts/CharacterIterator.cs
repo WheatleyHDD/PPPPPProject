@@ -52,7 +52,10 @@ public class CharacterIterator : Node2D
     public override void _Draw()
     {
         Node2D curr = GetChild(current_char) as Node2D;
-        DrawCircle(curr.GlobalPosition - new Vector2(0, 40), 3, Colors.White);
+        
+        Texture selector_tex = GD.Load<Texture>("res://Sprites/selector.png");
+        DrawTexture(selector_tex, curr.GlobalPosition - new Vector2(5, 55)); 
+        //DrawCircle(curr.GlobalPosition - new Vector2(0, 48), 3, Colors.White);
     }
 
     public PlayerBase GetCurrent() => GetChild(current_char) as PlayerBase;

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Objects/Bases/PlayerBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/Characters/SecondCharacter.cs" type="Script" id=2]
+[ext_resource path="res://Sprites/character2.png" type="Texture" id=3]
 
 [node name="SecondCharacter" instance=ExtResource( 1 )]
 collision_layer = 2
@@ -12,3 +13,23 @@ max_jump_count = 2
 
 [node name="Model" parent="." index="1"]
 modulate = Color( 0.647059, 0.14902, 0.223529, 1 )
+
+[node name="armR" parent="CharModel/sprites" index="0"]
+texture = ExtResource( 3 )
+
+[node name="legR" parent="CharModel/sprites" index="1"]
+texture = ExtResource( 3 )
+
+[node name="legL" parent="CharModel/sprites" index="2"]
+texture = ExtResource( 3 )
+
+[node name="body" parent="CharModel/sprites" index="3"]
+texture = ExtResource( 3 )
+
+[node name="armL" parent="CharModel/sprites" index="4"]
+texture = ExtResource( 3 )
+
+[node name="head" parent="CharModel/sprites" index="5"]
+texture = ExtResource( 3 )
+
+[editable path="CharModel"]
