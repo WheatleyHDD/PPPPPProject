@@ -24,29 +24,29 @@ shader_param/strength = 4
 [sub_resource type="Resource" id=51]
 script = ExtResource( 13 )
 name = "ГГ"
-text = "Так… Где это я? Это что, моя работа?"
-voice = ExtResource( 14 )
-
-[sub_resource type="Resource" id=52]
-script = ExtResource( 13 )
-name = "ГГ"
-text = "Здесь я работаю вот уже… достаточно долго. Странно…"
+text = "Эм... Это что, моя работа?"
 voice = ExtResource( 14 )
 
 [sub_resource type="Resource" id=53]
 script = ExtResource( 13 )
 name = "ГГ"
-text = "Вчера я еще был дома в свой выходной день. А сейчас уже… понедельник?"
-voice = ExtResource( 14 )
-
-[sub_resource type="Resource" id=54]
-script = ExtResource( 13 )
-name = "ГГ"
-text = "Надо найти кого-нибудь!"
+text = "Но какой сегодня день?"
 voice = ExtResource( 14 )
 
 [sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 32, 224 )
+
+[sub_resource type="Resource" id=57]
+script = ExtResource( 13 )
+name = "ГГ"
+text = "Я думаю тут можно пролезть"
+voice = ExtResource( 14 )
+
+[sub_resource type="Resource" id=58]
+script = ExtResource( 13 )
+name = "ГГ"
+text = "Вот бы здесь как в играх можно было сделать подкат нажатием стрелки ВНИЗ"
+voice = ExtResource( 14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -885,10 +885,18 @@ position = Vector2( 2816, 960 )
 position = Vector2( 4992, 1408 )
 
 [node name="FastDialTrigger" parent="LevelObjects" instance=ExtResource( 12 )]
-position = Vector2( 640, 512 )
-query = [ SubResource( 51 ), SubResource( 52 ), SubResource( 53 ), SubResource( 54 ) ]
+position = Vector2( 288, 512 )
+query = [ SubResource( 51 ), SubResource( 53 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger"]
+position = Vector2( 0, -64 )
+shape = SubResource( 50 )
+
+[node name="FastDialTrigger2" parent="LevelObjects" instance=ExtResource( 12 )]
+position = Vector2( 1952, 512 )
+query = [ SubResource( 57 ), SubResource( 58 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger2"]
 position = Vector2( 0, -64 )
 shape = SubResource( 50 )
 

@@ -24,9 +24,6 @@ public class MainCharacter : PlayerBase
             sliding = true;
             stopped_animation = true;
             slide_sound.Play();
-            GetNode<Particles2D>("SlideEffect").GlobalPosition = GetNode<Position2D>("CharModel/Skeleton2D/Hip/ThighR/LegR/FootR/SlideParticles").GlobalPosition;
-            GetNode<Particles2D>("SlideEffect").Emitting = true;
-            GetNode<Particles2D>("SlideEffect").Scale = new Vector2(last_dir, GetNode<Particles2D>("SlideEffect").Scale.y);
             GetNode<AnimationPlayer>("CharModel/AnimationPlayer").PlaybackSpeed = 1f;
             GetNode<AnimationPlayer>("CharModel/AnimationPlayer").Play("slide");
             GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
@@ -34,8 +31,13 @@ public class MainCharacter : PlayerBase
         if (!sliding) h_move = Input.GetAxis("ui_left", "ui_right");
 
         if (sliding) {
+            GetNode<Particles2D>("SlideEffect").GlobalPosition = GetNode<Position2D>("CharModel/Skeleton2D/Hip/ThighR/LegR/FootR/SlideParticles").GlobalPosition;
+            GetNode<Particles2D>("SlideEffect").Emitting = IsOnFloor();
+            GetNode<Particles2D>("SlideEffect").Scale = new Vector2(last_dir, GetNode<Particles2D>("SlideEffect").Scale.y);
+
             velocity.x = Mathf.Lerp(velocity.x, 0, 0.01f);
             if (velocity.y != 0) velocity.y = Mathf.Lerp(velocity.y, 0, 0.01f);
+
             if (velocity.x == 0) {
                 if (GetNode<RayCast2D>("up").IsColliding() && GetNode<RayCast2D>("down").IsColliding())
                     Die();
