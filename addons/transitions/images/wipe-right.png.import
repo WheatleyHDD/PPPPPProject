@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shkolnik.png-674fd9433166b8c4ea38e372a188abb9.stex"
+path="res://.import/wipe-right.png-dc0bfe935bd67a3d24decf83c141437e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/shkolnik.png"
-dest_files=[ "res://.import/shkolnik.png-674fd9433166b8c4ea38e372a188abb9.stex" ]
+source_file="res://addons/transitions/images/wipe-right.png"
+dest_files=[ "res://.import/wipe-right.png-dc0bfe935bd67a3d24decf83c141437e.stex" ]
 
 [params]
 

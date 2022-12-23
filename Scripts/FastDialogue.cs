@@ -67,7 +67,7 @@ public class FastDialogue : CanvasLayer
         
         if (_current.DialogueVoice != null) 
         {
-            voice_count = (_current.DialogueText.Count(" ") + 1) * 2;
+            voice_count = (_current.DialogueText.Count(" ") + 1);
             voice_player.Stream = _current.DialogueVoice;
             voice_player.VolumeDb = _current.DialogueVolume;
         }

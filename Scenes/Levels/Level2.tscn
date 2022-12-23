@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Sprites/solid.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LevelBuilder/HelperScreenBorders.cs" type="Script" id=2]
@@ -16,6 +16,8 @@
 [ext_resource path="res://Objects/Spikes.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Sprites/backgrounds/sklad.png" type="Texture" id=15]
 [ext_resource path="res://Shaders/BoxBlur.gdshader" type="Shader" id=16]
+[ext_resource path="res://Objects/End.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Scenes/Levels/Level3.tscn" type="PackedScene" id=18]
 
 [sub_resource type="ShaderMaterial" id=50]
 shader = ExtResource( 16 )
@@ -713,10 +715,10 @@ position = Vector2( 3872, 384 )
 position = Vector2( 3904, 384 )
 
 [node name="BulkBlock3" parent="LevelObjects" instance=ExtResource( 12 )]
-position = Vector2( 4320, 192 )
+position = Vector2( 4416, 192 )
 
 [node name="BulkBlock4" parent="LevelObjects" instance=ExtResource( 12 )]
-position = Vector2( 4352, 192 )
+position = Vector2( 4448, 192 )
 
 [node name="Button4" parent="LevelObjects" instance=ExtResource( 11 )]
 position = Vector2( 4896, 640 )
@@ -759,16 +761,16 @@ rotation = -3.14159
 position = Vector2( 6048, 224 )
 rotation = -3.14159
 
-[node name="Spikes10" parent="LevelObjects" instance=ExtResource( 14 )]
-position = Vector2( 6176, 224 )
-rotation = -3.14159
-
 [node name="Spikes11" parent="LevelObjects" instance=ExtResource( 14 )]
 position = Vector2( 6208, 224 )
 rotation = -3.14159
 
 [node name="Spikes12" parent="LevelObjects" instance=ExtResource( 14 )]
 position = Vector2( 6240, 224 )
+rotation = -3.14159
+
+[node name="Spikes13" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 6272, 224 )
 rotation = -3.14159
 
 [node name="LaserPoint26" parent="LevelObjects" instance=ExtResource( 10 )]
@@ -846,6 +848,13 @@ connected_object = [ NodePath("../LaserPoint35") ]
 [node name="Button8" parent="LevelObjects" instance=ExtResource( 11 )]
 position = Vector2( 5728, 160 )
 connected_object = [ NodePath("../LaserPoint36") ]
+
+[node name="End" parent="LevelObjects" instance=ExtResource( 17 )]
+position = Vector2( 5504, 592 )
+scale = Vector2( 1.99999, 1.5 )
+dialogueStart = "/cutscene2"
+nextLevel = ExtResource( 18 )
+spawnDoor = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )

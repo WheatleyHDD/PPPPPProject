@@ -1,11 +1,11 @@
 {
-	"color": "#ffab2d2d",
+	"color": "#ffffffff",
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1667379874.json",
+	"id": "character-1671808213.json",
 	"mirror_portraits": false,
-	"name": "TestPers1",
+	"name": "ДД",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
@@ -13,13 +13,13 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://Sprites/no_talk.png"
+			"path": "res://Sprites/Portraits/cut_2.png"
 		},
 		{
-			"name": "no_talk_portrait",
-			"path": "res://Sprites/no_talk_portrait.png"
+			"name": "Diff",
+			"path": "res://Sprites/Portraits/cut_2_diff.png"
 		}
 	],
-	"scale": 130,
+	"scale": 60,
 	"theme": ""
 }

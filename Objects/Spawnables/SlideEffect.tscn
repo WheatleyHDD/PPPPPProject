@@ -8,10 +8,11 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 gradient = SubResource( 1 )
 
 [sub_resource type="ParticlesMaterial" id=3]
+trail_divisor = 20
 flag_disable_z = true
 direction = Vector3( -1, 0, 0 )
 spread = 10.0
-gravity = Vector3( 0, 35, 0 )
+gravity = Vector3( 0, 0, 0 )
 initial_velocity = 75.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
@@ -21,9 +22,9 @@ color_ramp = SubResource( 2 )
 
 [node name="SlideEffect" type="Particles2D"]
 rotation = 0.174533
+z_index = 1
 emitting = false
-amount = 12
-preprocess = 1.0
-speed_scale = 2.0
+amount = 160
+speed_scale = 3.0
 local_coords = false
 process_material = SubResource( 3 )

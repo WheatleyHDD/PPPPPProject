@@ -1,11 +1,11 @@
 {
-	"color": "#ff15b5b2",
+	"color": "#ffffffff",
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1667379885.json",
+	"id": "character-1671808202.json",
 	"mirror_portraits": false,
-	"name": "TestPers2",
+	"name": "ГГ",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
@@ -13,13 +13,9 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://Sprites/shkolnik.png"
-		},
-		{
-			"name": "shkolnik_portrait",
-			"path": "res://Sprites/shkolnik_portrait.png"
+			"path": "res://Sprites/Portraits/cut_1.png"
 		}
 	],
-	"scale": 130,
+	"scale": 55,
 	"theme": ""
 }
