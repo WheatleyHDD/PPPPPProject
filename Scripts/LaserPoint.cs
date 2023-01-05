@@ -9,6 +9,8 @@ public class LaserPoint : Node2D
     [Export] public float OffTime = 0f;
 
     [Export] public NodePath connected_to;
+
+    [Export] public int rayLength = 1299;
     
     Vector2 connPosition;
 
@@ -40,7 +42,7 @@ public class LaserPoint : Node2D
             GlobalPosition = ct.GlobalPosition + connPosition;
         }
         laser.Enabled = IsCasting;
-        laser.CastTo = IsCasting ? Vector2.Right * 1299 : Vector2.Zero;
+        laser.CastTo = IsCasting ? Vector2.Right * rayLength : Vector2.Zero;
     }
 
     public override void _PhysicsProcess(float delta)

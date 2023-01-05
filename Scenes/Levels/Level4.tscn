@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Sprites/solid.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LevelBuilder/HelperScreenBorders.cs" type="Script" id=2]
@@ -7,6 +7,23 @@
 [ext_resource path="res://Sprites/sample_tiles.png" type="Texture" id=5]
 [ext_resource path="res://Objects/Characters/MainCharacter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scripts/CameraMovement.cs" type="Script" id=7]
+[ext_resource path="res://Objects/LockBlock.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Objects/LockBlocks.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Objects/LocKey.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Shaders/BoxBlur.gdshader" type="Shader" id=11]
+[ext_resource path="res://Sprites/backgrounds/sklad.png" type="Texture" id=12]
+[ext_resource path="res://Objects/Characters/SecondCharacter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Objects/LaserPoint.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Objects/Spikes.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Objects/MovingPlatform.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Objects/LaserPoint2.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Objects/CheckPoint.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Objects/End.tscn" type="PackedScene" id=20]
+
+[sub_resource type="ShaderMaterial" id=50]
+shader = ExtResource( 11 )
+shader_param/strength = 4
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -484,13 +501,1028 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.2, 0 )
+motion_offset = Vector2( -640, -360 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Sklad" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+material = SubResource( 50 )
+scale = Vector2( 0.667, 0.667 )
+texture = ExtResource( 12 )
+centered = false
+
 [node name="LevelHelpers" type="Node2D" parent="."]
 
 [node name="CharacterSpawner" parent="LevelHelpers" instance=ExtResource( 3 )]
 position = Vector2( 96, 640 )
 character = ExtResource( 6 )
 
+[node name="CharacterSpawner2" parent="LevelHelpers" instance=ExtResource( 3 )]
+position = Vector2( 128, 640 )
+character = ExtResource( 13 )
+
 [node name="LevelObjects" type="Node2D" parent="."]
+
+[node name="LockBlocks" parent="LevelObjects" instance=ExtResource( 9 )]
+position = Vector2( 448, 640 )
+
+[node name="LockBlock" parent="LevelObjects/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( -32, -32 )
+
+[node name="LockBlock2" parent="LevelObjects/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( -32, -64 )
+
+[node name="LockBlock3" parent="LevelObjects/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( -32, -96 )
+
+[node name="LockBlock4" parent="LevelObjects/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( -32, -128 )
+
+[node name="LockBlock5" parent="LevelObjects/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( -32, -160 )
+
+[node name="LockBlock6" parent="LevelObjects/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( -32, -192 )
+
+[node name="LockBlocks2" parent="LevelObjects" instance=ExtResource( 9 )]
+position = Vector2( 704, 672 )
+
+[node name="LockBlock" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -32 )
+
+[node name="LockBlock2" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -64 )
+
+[node name="LockBlock3" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -96 )
+
+[node name="LockBlock4" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -128 )
+
+[node name="LockBlock5" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -160 )
+
+[node name="LockBlock6" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -192 )
+
+[node name="LockBlock7" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -224 )
+
+[node name="LockBlock8" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( -32, -256 )
+
+[node name="LockBlock9" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, -256 )
+
+[node name="LockBlock10" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 32, -256 )
+
+[node name="LockBlock11" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 64, -256 )
+
+[node name="LockBlock12" parent="LevelObjects/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 96, -256 )
+
+[node name="LockBlocks3" parent="LevelObjects" instance=ExtResource( 9 )]
+position = Vector2( 832, 32 )
+
+[node name="LockBlock" parent="LevelObjects/LockBlocks3" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LocKey" parent="LevelObjects" instance=ExtResource( 10 )]
+position = Vector2( 544, 640 )
+lockBlocks = NodePath("../LockBlocks")
+
+[node name="LocKey2" parent="LevelObjects" instance=ExtResource( 10 )]
+position = Vector2( 384, 384 )
+lockBlocks = NodePath("../LockBlocks3")
+
+[node name="LocKey3" parent="LevelObjects" instance=ExtResource( 10 )]
+position = Vector2( 864, 384 )
+lockBlocks = NodePath("../LockBlocks2")
+
+[node name="LaserPoint" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 160, 224 )
+rotation = 1.57079
+OnTime = 0.5
+OffTime = 0.5
+
+[node name="LaserPoint2" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 288, 224 )
+rotation = 1.57079
+IsCasting = false
+OnTime = 0.5
+OffTime = 0.5
+
+[node name="Spikes" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 960, 160 )
+
+[node name="Spikes2" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 992, 160 )
+
+[node name="Spikes3" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 1024, 160 )
+
+[node name="Spikes4" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 1184, 384 )
+
+[node name="Spikes5" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 1152, 384 )
+
+[node name="Spikes6" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 1024, 384 )
+
+[node name="Spikes7" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 992, 384 )
+
+[node name="Spikes8" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 960, 384 )
+
+[node name="Spikes9" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 1888, 128 )
+
+[node name="Spikes10" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 1920, 128 )
+
+[node name="Spikes11" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 2336, 160 )
+
+[node name="Spikes12" parent="LevelObjects" instance=ExtResource( 15 )]
+position = Vector2( 2368, 160 )
+
+[node name="spikes" type="Node2D" parent="LevelObjects"]
+position = Vector2( 1760, 640 )
+
+[node name="Spikes" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+
+[node name="Spikes2" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 32, 0 )
+
+[node name="Spikes3" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 64, 0 )
+
+[node name="Spikes4" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 96, 0 )
+
+[node name="Spikes5" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 128, 0 )
+
+[node name="Spikes6" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 160, 0 )
+
+[node name="Spikes7" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 192, 0 )
+
+[node name="Spikes8" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 224, 0 )
+
+[node name="Spikes9" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 256, 0 )
+
+[node name="Spikes10" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 288, 0 )
+
+[node name="Spikes11" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 320, 0 )
+
+[node name="Spikes12" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 352, 0 )
+
+[node name="Spikes13" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 384, 0 )
+
+[node name="Spikes14" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 416, 0 )
+
+[node name="Spikes15" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 448, 0 )
+
+[node name="Spikes16" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 480, 0 )
+
+[node name="Spikes17" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 512, 0 )
+
+[node name="Spikes18" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 544, 0 )
+
+[node name="Spikes19" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 576, 0 )
+
+[node name="Spikes20" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 608, 0 )
+
+[node name="Spikes21" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 640, 0 )
+
+[node name="Spikes22" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 672, 0 )
+
+[node name="Spikes23" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 704, 0 )
+
+[node name="Spikes24" parent="LevelObjects/spikes" instance=ExtResource( 15 )]
+position = Vector2( 736, 0 )
+
+[node name="MovingPlatform" parent="LevelObjects" instance=ExtResource( 16 )]
+position = Vector2( 1408, 32 )
+Activated = false
+
+[node name="Button" parent="LevelObjects" instance=ExtResource( 17 )]
+position = Vector2( 1600, 672 )
+connected_object = [ NodePath("../MovingPlatform") ]
+
+[node name="LockBlocks4" parent="LevelObjects" instance=ExtResource( 9 )]
+position = Vector2( 2464, 32 )
+
+[node name="LockBlock" parent="LevelObjects/LockBlocks4" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlocks5" parent="LevelObjects" instance=ExtResource( 9 )]
+position = Vector2( 2464, 224 )
+
+[node name="LockBlock" parent="LevelObjects/LockBlocks5" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LocKey4" parent="LevelObjects" instance=ExtResource( 10 )]
+position = Vector2( 2240, 160 )
+lockBlocks = NodePath("../LockBlocks5")
+
+[node name="LocKey5" parent="LevelObjects" instance=ExtResource( 10 )]
+position = Vector2( 2144, 320 )
+lockBlocks = NodePath("../LockBlocks4")
+
+[node name="LaserPointTwo" parent="LevelObjects" instance=ExtResource( 18 )]
+position = Vector2( 2592, 704 )
+
+[node name="LaserPointTwo2" parent="LevelObjects" instance=ExtResource( 18 )]
+position = Vector2( 2656, 224 )
+
+[node name="CheckPoint" parent="LevelObjects" instance=ExtResource( 19 )]
+position = Vector2( 1056, 672 )
+
+[node name="CheckPoint2" parent="LevelObjects" instance=ExtResource( 19 )]
+position = Vector2( 2592, 416 )
+
+[node name="CheckPoint3" parent="LevelObjects" instance=ExtResource( 19 )]
+position = Vector2( 2592, 192 )
+
+[node name="CheckPoint4" parent="LevelObjects" instance=ExtResource( 19 )]
+position = Vector2( 3712, 1408 )
+
+[node name="CellRoom" type="Node2D" parent="LevelObjects"]
+
+[node name="LockBlocks" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 2912, 768 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks2" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3136, 768 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks2" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks3" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3360, 768 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks3" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks4" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3584, 768 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks4" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks5" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 2912, 992 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks5" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks6" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3136, 992 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks6" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks6" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks6" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks6" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks6" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks6" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks7" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3360, 992 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks7" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks7" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks7" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks7" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks7" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks7" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks8" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3584, 992 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks8" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks8" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks8" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks8" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks8" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks8" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks9" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 2912, 1216 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks9" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks9" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks9" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks9" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks9" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks9" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks10" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3136, 1216 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks10" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks10" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks10" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks10" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks10" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks10" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks11" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3360, 1216 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks11" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks11" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks11" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks11" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks11" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks11" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks12" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3584, 1216 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks12" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks12" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks12" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks12" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks12" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks12" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks13" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 2720, 960 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks13" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks13" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks13" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks13" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks13" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks13" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks14" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 2944, 960 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks14" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks14" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks14" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks14" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks14" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks14" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks15" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3168, 960 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks15" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks15" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks15" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks15" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks15" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks15" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks16" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3392, 960 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks16" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks16" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks16" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks16" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks16" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks16" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks17" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3616, 960 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks17" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks17" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks17" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks17" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks17" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks17" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks18" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 2720, 1184 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks18" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks18" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks18" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks18" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks18" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks18" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks19" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 2944, 1184 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks19" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks19" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks19" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks19" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks19" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks19" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks20" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3168, 1184 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks20" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks20" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks20" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks20" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks20" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks20" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks21" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3392, 1184 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks21" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks21" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks21" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks21" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks21" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks21" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LockBlocks22" parent="LevelObjects/CellRoom" instance=ExtResource( 9 )]
+position = Vector2( 3616, 1184 )
+
+[node name="LockBlock" parent="LevelObjects/CellRoom/LockBlocks22" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/CellRoom/LockBlocks22" instance=ExtResource( 8 )]
+position = Vector2( 32, 0 )
+
+[node name="LockBlock3" parent="LevelObjects/CellRoom/LockBlocks22" instance=ExtResource( 8 )]
+position = Vector2( 64, 0 )
+
+[node name="LockBlock4" parent="LevelObjects/CellRoom/LockBlocks22" instance=ExtResource( 8 )]
+position = Vector2( 96, 0 )
+
+[node name="LockBlock5" parent="LevelObjects/CellRoom/LockBlocks22" instance=ExtResource( 8 )]
+position = Vector2( 128, 0 )
+
+[node name="LockBlock6" parent="LevelObjects/CellRoom/LockBlocks22" instance=ExtResource( 8 )]
+position = Vector2( 160, 0 )
+
+[node name="LocKey" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3648, 928 )
+lockBlocks = NodePath("../LockBlocks17")
+
+[node name="LocKey2" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3488, 928 )
+lockBlocks = NodePath("../LockBlocks8")
+
+[node name="LocKey3" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3232, 928 )
+lockBlocks = NodePath("../LockBlocks11")
+
+[node name="LocKey4" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 2752, 800 )
+lockBlocks = NodePath("../LockBlocks12")
+
+[node name="LocKey5" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 2752, 1152 )
+lockBlocks = NodePath("../LockBlocks9")
+
+[node name="LocKey6" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3072, 800 )
+
+[node name="LocKey7" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3456, 1152 )
+lockBlocks = NodePath("../LockBlocks21")
+
+[node name="LocKey8" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3456, 1376 )
+lockBlocks = NodePath("../LockBlocks3")
+
+[node name="LocKey9" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3776, 1152 )
+lockBlocks = NodePath("../LockBlocks4")
+
+[node name="LocKey10" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3200, 1376 )
+lockBlocks = NodePath("../LockBlocks15")
+
+[node name="LocKey11" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 2976, 1280 )
+lockBlocks = NodePath("../LockBlocks6")
+
+[node name="LocKey12" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 2784, 1376 )
+lockBlocks = NodePath("../LockBlocks13")
+
+[node name="LocKey13" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3072, 1088 )
+lockBlocks = NodePath("../LockBlocks5")
+
+[node name="LocKey14" parent="LevelObjects/CellRoom" instance=ExtResource( 10 )]
+position = Vector2( 3200, 1088 )
+lockBlocks = NodePath("../LockBlocks10")
+
+[node name="DebilTunnel" type="Node2D" parent="LevelObjects"]
+position = Vector2( 3840, 736 )
+
+[node name="LockBlocks" parent="LevelObjects/DebilTunnel" instance=ExtResource( 9 )]
+position = Vector2( 640, 0 )
+
+[node name="LockBlock" parent="LevelObjects/DebilTunnel/LockBlocks" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/DebilTunnel/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/DebilTunnel/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/DebilTunnel/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/DebilTunnel/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/DebilTunnel/LockBlocks" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks2" parent="LevelObjects/DebilTunnel" instance=ExtResource( 9 )]
+position = Vector2( 928, 0 )
+
+[node name="LockBlock" parent="LevelObjects/DebilTunnel/LockBlocks2" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/DebilTunnel/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/DebilTunnel/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/DebilTunnel/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/DebilTunnel/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/DebilTunnel/LockBlocks2" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks3" parent="LevelObjects/DebilTunnel" instance=ExtResource( 9 )]
+position = Vector2( 1248, 0 )
+
+[node name="LockBlock" parent="LevelObjects/DebilTunnel/LockBlocks3" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/DebilTunnel/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/DebilTunnel/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/DebilTunnel/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/DebilTunnel/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/DebilTunnel/LockBlocks3" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks4" parent="LevelObjects/DebilTunnel" instance=ExtResource( 9 )]
+position = Vector2( 1600, 0 )
+
+[node name="LockBlock" parent="LevelObjects/DebilTunnel/LockBlocks4" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/DebilTunnel/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/DebilTunnel/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/DebilTunnel/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/DebilTunnel/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/DebilTunnel/LockBlocks4" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LockBlocks5" parent="LevelObjects/DebilTunnel" instance=ExtResource( 9 )]
+position = Vector2( 1888, 0 )
+
+[node name="LockBlock" parent="LevelObjects/DebilTunnel/LockBlocks5" instance=ExtResource( 8 )]
+
+[node name="LockBlock2" parent="LevelObjects/DebilTunnel/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 32 )
+
+[node name="LockBlock3" parent="LevelObjects/DebilTunnel/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 64 )
+
+[node name="LockBlock4" parent="LevelObjects/DebilTunnel/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 96 )
+
+[node name="LockBlock5" parent="LevelObjects/DebilTunnel/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 128 )
+
+[node name="LockBlock6" parent="LevelObjects/DebilTunnel/LockBlocks5" instance=ExtResource( 8 )]
+position = Vector2( 0, 160 )
+
+[node name="LocKey" parent="LevelObjects/DebilTunnel" instance=ExtResource( 10 )]
+position = Vector2( 640, 384 )
+lockBlocks = NodePath("../LockBlocks4")
+
+[node name="LocKey2" parent="LevelObjects/DebilTunnel" instance=ExtResource( 10 )]
+position = Vector2( 1056, 384 )
+lockBlocks = NodePath("../LockBlocks5")
+
+[node name="LocKey3" parent="LevelObjects/DebilTunnel" instance=ExtResource( 10 )]
+position = Vector2( 1472, 384 )
+lockBlocks = NodePath("../LockBlocks3")
+
+[node name="LocKey4" parent="LevelObjects/DebilTunnel" instance=ExtResource( 10 )]
+position = Vector2( 1888, 384 )
+lockBlocks = NodePath("../LockBlocks2")
+
+[node name="LocKey5" parent="LevelObjects/DebilTunnel" instance=ExtResource( 10 )]
+position = Vector2( 2336, 512 )
+lockBlocks = NodePath("../LockBlocks")
+
+[node name="Button" parent="LevelObjects/DebilTunnel" instance=ExtResource( 17 )]
+position = Vector2( 384, 192 )
+connected_object = [ NodePath("../MovingPlatform") ]
+
+[node name="MovingPlatform" parent="LevelObjects/DebilTunnel" instance=ExtResource( 16 )]
+position = Vector2( 384, 544 )
+StartVectorInt = 3
+Activated = false
+
+[node name="Spikes" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 736, 160 )
+
+[node name="Spikes2" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 768, 160 )
+
+[node name="Spikes3" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 800, 160 )
+
+[node name="Spikes4" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 1344, 128 )
+
+[node name="Spikes5" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 1376, 128 )
+
+[node name="Spikes6" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 1408, 128 )
+
+[node name="Spikes7" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 1440, 128 )
+
+[node name="Spikes8" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 1472, 128 )
+
+[node name="Spikes9" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 1504, 128 )
+
+[node name="Spikes10" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 2016, 160 )
+
+[node name="Spikes11" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 2048, 128 )
+
+[node name="Spikes12" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 2080, 96 )
+
+[node name="Spikes13" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 2112, 96 )
+
+[node name="Spikes14" parent="LevelObjects/DebilTunnel" instance=ExtResource( 15 )]
+position = Vector2( 2144, 96 )
+
+[node name="LaserPoint" parent="LevelObjects/DebilTunnel" instance=ExtResource( 14 )]
+position = Vector2( 1696, 0 )
+rotation = 1.57079
+OnTime = 1.0
+OffTime = 2.0
+
+[node name="LaserPoint2" parent="LevelObjects/DebilTunnel" instance=ExtResource( 14 )]
+position = Vector2( 1792, 0 )
+rotation = 1.57079
+IsCasting = false
+OnTime = 1.0
+OffTime = 2.0
+
+[node name="LaserPoint3" parent="LevelObjects/DebilTunnel" instance=ExtResource( 14 )]
+position = Vector2( 1024, 0 )
+rotation = 1.57079
+IsCasting = false
+OnTime = 1.0
+OffTime = 2.0
+
+[node name="LaserPoint4" parent="LevelObjects/DebilTunnel" instance=ExtResource( 14 )]
+position = Vector2( 1152, 0 )
+rotation = 1.57079
+OnTime = 2.0
+OffTime = 1.0
+
+[node name="LaserPointTwo" parent="LevelObjects/DebilTunnel" instance=ExtResource( 18 )]
+position = Vector2( 320, 704 )
+
+[node name="Laser1" parent="LevelObjects/DebilTunnel/LaserPointTwo" index="0"]
+rayLength = 2000
+
+[node name="Laser2" parent="LevelObjects/DebilTunnel/LaserPointTwo" index="1"]
+rayLength = 2000
+
+[node name="End" parent="LevelObjects" instance=ExtResource( 20 )]
+position = Vector2( 6304, 1216 )
+scale = Vector2( 2, 2 )
+spawnDoor = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -498,7 +1530,7 @@ cell_size = Vector2( 32, 32 )
 collision_layer = 31
 collision_mask = 31
 format = 1
-tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 1, -65535, 1, 1, -65534, 1, 1, -65533, 1, 1, -65532, 1, 1, -65531, 1, 1, -65530, 1, 1, -65529, 1, 1, -65528, 1, 1, -65527, 1, 1, -65526, 1, 1, -65525, 1, 1, -65524, 1, 1, -65523, 1, 1, -65522, 1, 1, -65521, 1, 1, -65520, 1, 1, -65519, 1, 1, -65518, 1, 1, -65517, 1, 1, -65516, 1, 1, -65515, 1, 1, -65514, 1, 1, -65513, 1, 1, -65512, 1, 1, -65511, 1, 1, -65510, 1, 1, -65509, 1, 1, -65508, 1, 1, -65507, 1, 1, -65506, 1, 1, -65505, 1, 1, -65504, 1, 1, -65503, 1, 1, -65502, 1, 1, -65501, 1, 1, -65500, 1, 1, -65499, 1, 1, -65498, 1, 1, -65497, 1, 1, -65496, 1, 2, 65535, 1, 65536, 0, 1, 6, 1, 1, 131073, 2, 1, 131073, 3, 1, 131073, 4, 1, 131073, 5, 1, 131073, 6, 1, 131073, 7, 1, 131073, 8, 1, 131073, 9, 1, 131073, 10, 1, 131073, 11, 1, 131073, 12, 1, 131073, 13, 1, 131073, 14, 1, 131073, 15, 1, 131073, 16, 1, 131073, 17, 1, 131073, 18, 1, 131073, 19, 1, 131073, 20, 1, 131073, 21, 1, 131073, 22, 1, 131073, 23, 1, 131073, 24, 1, 131073, 25, 1, 131073, 26, 1, 131073, 27, 1, 131073, 28, 1, 131073, 29, 1, 131073, 30, 1, 131073, 31, 1, 131073, 32, 1, 131073, 33, 1, 131073, 34, 1, 131073, 35, 1, 131073, 36, 1, 131073, 37, 1, 131073, 38, 1, 131073, 39, 1, 7, 40, 1, 65538, 131071, 1, 65536, 65536, 1, 65538, 65575, 1, 65536, 65576, 1, 65538, 196607, 1, 65536, 131072, 1, 65538, 131111, 1, 65536, 131112, 1, 65538, 262143, 1, 65536, 196608, 1, 65538, 196647, 1, 65536, 196648, 1, 65538, 327679, 1, 65536, 262144, 1, 65538, 262183, 1, 65536, 262184, 1, 65538, 393215, 1, 65536, 327680, 1, 65538, 327719, 1, 65536, 327720, 1, 65538, 458751, 1, 65536, 393216, 1, 65538, 393255, 1, 65536, 393256, 1, 65538, 524287, 1, 65536, 458752, 1, 65538, 458791, 1, 65536, 458792, 1, 65538, 589823, 1, 65536, 524288, 1, 65538, 524327, 1, 65536, 524328, 1, 65538, 655359, 1, 65536, 589824, 1, 65538, 589863, 1, 65536, 589864, 1, 65538, 720895, 1, 65536, 655360, 1, 65538, 655399, 1, 65536, 655400, 1, 65538, 786431, 1, 65536, 720896, 1, 65538, 720935, 1, 65536, 720936, 1, 65538, 851967, 1, 65536, 786432, 1, 65538, 786471, 1, 65536, 786472, 1, 65538, 917503, 1, 65536, 851968, 1, 65538, 852007, 1, 65536, 852008, 1, 65538, 983039, 1, 65536, 917504, 1, 65538, 917543, 1, 65536, 917544, 1, 65538, 1048575, 1, 65536, 983040, 1, 65538, 983079, 1, 65536, 983080, 1, 65538, 1114111, 1, 65536, 1048576, 1, 65538, 1048615, 1, 65536, 1048616, 1, 65538, 1179647, 1, 65536, 1114112, 1, 65538, 1114151, 1, 65536, 1114152, 1, 65538, 1245183, 1, 65536, 1179648, 1, 65538, 1179687, 1, 65536, 1179688, 1, 65538, 1310719, 1, 65536, 1245184, 1, 65538, 1245223, 1, 65536, 1245224, 1, 65538, 1376255, 1, 65536, 1310720, 1, 65538, 1310759, 1, 65536, 1310760, 1, 65538, 1441791, 1, 65536, 1376256, 1, 65542, 1376257, 1, 1, 1376258, 1, 1, 1376259, 1, 1, 1376260, 1, 1, 1376261, 1, 1, 1376262, 1, 1, 1376263, 1, 1, 1376264, 1, 1, 1376265, 1, 1, 1376266, 1, 1, 1376267, 1, 1, 1376268, 1, 1, 1376269, 1, 1, 1376270, 1, 1, 1376271, 1, 1, 1376272, 1, 1, 1376273, 1, 1, 1376274, 1, 1, 1376275, 1, 1, 1376276, 1, 1, 1376277, 1, 1, 1376278, 1, 1, 1376279, 1, 1, 1376280, 1, 1, 1376281, 1, 1, 1376282, 1, 1, 1376283, 1, 1, 1376284, 1, 1, 1376285, 1, 1, 1376286, 1, 1, 1376287, 1, 1, 1376288, 1, 1, 1376289, 1, 1, 1376290, 1, 1, 1376291, 1, 1, 1376292, 1, 1, 1376293, 1, 1, 1376294, 1, 1, 1376295, 1, 65543, 1376296, 1, 65538, 1507327, 1, 131072, 1441792, 1, 131073, 1441793, 1, 131073, 1441794, 1, 131073, 1441795, 1, 131073, 1441796, 1, 131073, 1441797, 1, 131073, 1441798, 1, 131073, 1441799, 1, 131073, 1441800, 1, 131073, 1441801, 1, 131073, 1441802, 1, 131073, 1441803, 1, 131073, 1441804, 1, 131073, 1441805, 1, 131073, 1441806, 1, 131073, 1441807, 1, 131073, 1441808, 1, 131073, 1441809, 1, 131073, 1441810, 1, 131073, 1441811, 1, 131073, 1441812, 1, 131073, 1441813, 1, 131073, 1441814, 1, 131073, 1441815, 1, 131073, 1441816, 1, 131073, 1441817, 1, 131073, 1441818, 1, 131073, 1441819, 1, 131073, 1441820, 1, 131073, 1441821, 1, 131073, 1441822, 1, 131073, 1441823, 1, 131073, 1441824, 1, 131073, 1441825, 1, 131073, 1441826, 1, 131073, 1441827, 1, 131073, 1441828, 1, 131073, 1441829, 1, 131073, 1441830, 1, 131073, 1441831, 1, 131073, 1441832, 1, 131074 )
+tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 1, -65535, 1, 1, -65534, 1, 1, -65533, 1, 1, -65532, 1, 1, -65531, 1, 1, -65530, 1, 1, -65529, 1, 1, -65528, 1, 1, -65527, 1, 1, -65526, 1, 1, -65525, 1, 1, -65524, 1, 1, -65523, 1, 1, -65522, 1, 1, -65521, 1, 1, -65520, 1, 1, -65519, 1, 1, -65518, 1, 1, -65517, 1, 1, -65516, 1, 1, -65515, 1, 1, -65514, 1, 1, -65513, 1, 1, -65512, 1, 1, -65511, 1, 1, -65510, 1, 1, -65509, 1, 1, -65508, 1, 1, -65507, 1, 1, -65506, 1, 1, -65505, 1, 1, -65504, 1, 1, -65503, 1, 1, -65502, 1, 1, -65501, 1, 1, -65500, 1, 1, -65499, 1, 1, -65498, 1, 1, -65497, 1, 1, -65496, 1, 1, -65495, 1, 1, -65494, 1, 1, -65493, 1, 1, -65492, 1, 1, -65491, 1, 1, -65490, 1, 1, -65489, 1, 1, -65488, 1, 1, -65487, 1, 1, -65486, 1, 1, -65485, 1, 1, -65484, 1, 1, -65483, 1, 1, -65482, 1, 1, -65481, 1, 1, -65480, 1, 1, -65479, 1, 1, -65478, 1, 1, -65477, 1, 1, -65476, 1, 1, -65475, 1, 1, -65474, 1, 1, -65473, 1, 1, -65472, 1, 1, -65471, 1, 1, -65470, 1, 1, -65469, 1, 1, -65468, 1, 1, -65467, 1, 1, -65466, 1, 1, -65465, 1, 1, -65464, 1, 1, -65463, 1, 1, -65462, 1, 1, -65461, 1, 1, -65460, 1, 1, -65459, 1, 1, -65458, 1, 1, -65457, 1, 1, -65456, 1, 196614, -65455, 1, 262145, -65454, 1, 262145, -65453, 1, 262145, -65452, 1, 262145, -65451, 1, 262145, -65450, 1, 262145, -65449, 1, 262145, -65448, 1, 262145, -65447, 1, 262145, -65446, 1, 262145, -65445, 1, 262145, -65444, 1, 262145, -65443, 1, 262145, -65442, 1, 262145, -65441, 1, 262145, -65440, 1, 262145, -65439, 1, 262145, -65438, 1, 262145, -65437, 1, 262145, -65436, 1, 262145, -65435, 1, 262145, -65434, 1, 262145, -65433, 1, 262145, -65432, 1, 262145, -65431, 1, 262145, -65430, 1, 262145, -65429, 1, 262145, -65428, 1, 262145, -65427, 1, 262145, -65426, 1, 262145, -65425, 1, 262145, -65424, 1, 262145, -65423, 1, 262145, -65422, 1, 262145, -65421, 1, 262145, -65420, 1, 262145, -65419, 1, 262145, -65418, 1, 262145, -65417, 1, 196615, -65416, 1, 2, 65535, 1, 65536, 0, 1, 6, 1, 1, 131073, 2, 1, 131073, 3, 1, 131073, 4, 1, 131073, 5, 1, 131073, 6, 1, 131073, 7, 1, 131073, 8, 1, 131073, 9, 1, 131073, 10, 1, 131073, 11, 1, 131073, 12, 1, 131073, 13, 1, 131073, 14, 1, 131073, 15, 1, 131073, 16, 1, 131073, 17, 1, 131073, 18, 1, 131073, 19, 1, 131073, 20, 1, 131073, 21, 1, 131073, 22, 1, 131073, 23, 1, 131073, 24, 1, 131073, 25, 1, 131073, 26, 1, 131073, 27, 1, 131073, 28, 1, 131073, 29, 1, 131073, 30, 1, 131073, 31, 1, 131073, 32, 1, 131073, 33, 1, 131073, 34, 1, 131073, 35, 1, 131073, 36, 1, 131073, 37, 1, 131073, 38, 1, 131073, 39, 1, 7, 40, 1, 6, 41, 1, 131073, 42, 1, 131073, 43, 1, 131073, 44, 1, 131073, 45, 1, 131073, 46, 1, 131073, 47, 1, 131073, 48, 1, 131073, 49, 1, 131073, 50, 1, 131073, 51, 1, 131073, 52, 1, 65545, 53, 1, 131073, 54, 1, 131073, 55, 1, 131073, 56, 1, 131073, 57, 1, 131073, 58, 1, 131073, 59, 1, 131073, 60, 1, 131073, 61, 1, 131073, 62, 1, 131073, 63, 1, 131073, 64, 1, 131073, 65, 1, 7, 66, 1, 65537, 67, 1, 65537, 68, 1, 6, 69, 1, 131073, 70, 1, 131073, 71, 1, 131073, 72, 1, 131073, 73, 1, 131073, 74, 1, 131073, 75, 1, 131073, 76, 1, 131073, 77, 1, 131073, 78, 1, 131073, 79, 1, 7, 80, 1, 65538, 119, 1, 65536, 120, 1, 65538, 131071, 1, 65536, 65536, 1, 65538, 65575, 1, 65536, 65576, 1, 65538, 65588, 1, 65540, 65601, 1, 65536, 65602, 1, 65537, 65603, 1, 65537, 65604, 1, 65538, 65615, 1, 65536, 65616, 1, 65538, 65655, 1, 65536, 65656, 1, 65538, 196607, 1, 65536, 131072, 1, 65538, 131111, 1, 65536, 131112, 1, 65538, 131124, 1, 65540, 131137, 1, 65536, 131138, 1, 65537, 131139, 1, 65537, 131140, 1, 65538, 131151, 1, 131072, 131152, 1, 131074, 131191, 1, 65536, 131192, 1, 65538, 262143, 1, 65536, 196608, 1, 65538, 196647, 1, 65536, 196648, 1, 65538, 196660, 1, 65540, 196673, 1, 65536, 196674, 1, 65537, 196675, 1, 65537, 196676, 1, 65538, 196727, 1, 65536, 196728, 1, 65538, 327679, 1, 65536, 262144, 1, 65538, 262183, 1, 65536, 262184, 1, 65538, 262196, 1, 131076, 262209, 1, 131072, 262210, 1, 131073, 262211, 1, 131073, 262212, 1, 131074, 262240, 1, 262144, 262241, 1, 262146, 262263, 1, 65536, 262264, 1, 65538, 393215, 1, 65536, 327680, 1, 65538, 327719, 1, 65536, 327720, 1, 65538, 327739, 1, 0, 327740, 1, 2, 327769, 1, 262144, 327770, 1, 262146, 327783, 1, 262144, 327784, 1, 262146, 327790, 1, 262144, 327791, 1, 262146, 327799, 1, 65536, 327800, 1, 65538, 458751, 1, 65536, 393216, 1, 65538, 393220, 1, 262144, 393221, 1, 262145, 393222, 1, 262145, 393223, 1, 262145, 393224, 1, 262145, 393225, 1, 262145, 393226, 1, 262145, 393227, 1, 262145, 393228, 1, 262145, 393229, 1, 196624, 393242, 1, 196623, 393243, 1, 262145, 393244, 1, 262145, 393245, 1, 262145, 393246, 1, 262145, 393247, 1, 262145, 393248, 1, 262145, 393249, 1, 262145, 393250, 1, 262145, 393251, 1, 262146, 393255, 1, 65536, 393256, 1, 65538, 393263, 1, 196623, 393264, 1, 262145, 393265, 1, 262145, 393266, 1, 262145, 393267, 1, 262145, 393268, 1, 262145, 393269, 1, 262145, 393270, 1, 262145, 393271, 1, 262145, 393272, 1, 262145, 393273, 1, 262145, 393274, 1, 262145, 393275, 1, 262151, 393276, 1, 262150, 393277, 1, 262145, 393278, 1, 262145, 393279, 1, 262145, 393280, 1, 262145, 393281, 1, 262145, 393282, 1, 262145, 393283, 1, 262145, 393284, 1, 262145, 393285, 1, 262145, 393286, 1, 262145, 393287, 1, 262145, 393288, 1, 262145, 393289, 1, 262145, 393290, 1, 262145, 393291, 1, 262145, 393292, 1, 262145, 393293, 1, 262145, 393294, 1, 262145, 393295, 1, 196615, 393296, 1, 1, 393297, 1, 1, 393298, 1, 2, 393330, 1, 0, 393331, 1, 2, 393335, 1, 65536, 393336, 1, 65538, 524287, 1, 65536, 458752, 1, 65538, 458765, 1, 65540, 458778, 1, 65540, 458791, 1, 65536, 458792, 1, 65538, 458799, 1, 65540, 458831, 1, 65536, 458832, 1, 6, 458833, 1, 131073, 458834, 1, 262150, 458835, 1, 262145, 458836, 1, 262145, 458837, 1, 262145, 458838, 1, 262145, 458839, 1, 262145, 458840, 1, 262145, 458841, 1, 262145, 458842, 1, 262145, 458843, 1, 262145, 458844, 1, 262145, 458845, 1, 262145, 458846, 1, 262145, 458847, 1, 262145, 458848, 1, 262145, 458849, 1, 262145, 458850, 1, 262145, 458851, 1, 262145, 458852, 1, 262145, 458853, 1, 262145, 458854, 1, 262145, 458855, 1, 262145, 458856, 1, 262145, 458857, 1, 262145, 458858, 1, 262145, 458859, 1, 262145, 458860, 1, 262145, 458861, 1, 262145, 458862, 1, 262145, 458863, 1, 262145, 458864, 1, 262145, 458865, 1, 262145, 458866, 1, 262151, 458867, 1, 131074, 458871, 1, 65536, 458872, 1, 65538, 589823, 1, 65536, 524288, 1, 65538, 524301, 1, 65540, 524314, 1, 65540, 524327, 1, 65536, 524328, 1, 65538, 524335, 1, 65540, 524367, 1, 65536, 524368, 1, 65538, 524407, 1, 65536, 524408, 1, 65538, 655359, 1, 65536, 589824, 1, 65538, 589837, 1, 65540, 589850, 1, 65540, 589863, 1, 65536, 589864, 1, 65538, 589871, 1, 65540, 589903, 1, 131072, 589904, 1, 131074, 589943, 1, 65536, 589944, 1, 65538, 720895, 1, 65536, 655360, 1, 65538, 655373, 1, 65540, 655386, 1, 65540, 655399, 1, 65536, 655400, 1, 65538, 655407, 1, 65540, 655479, 1, 65536, 655480, 1, 65538, 786431, 1, 65536, 720896, 1, 65538, 720909, 1, 65540, 720922, 1, 65540, 720935, 1, 65536, 720936, 1, 65538, 720943, 1, 65540, 720962, 1, 262144, 720963, 1, 262145, 720964, 1, 262146, 721015, 1, 65536, 721016, 1, 65538, 851967, 1, 65536, 786432, 1, 65538, 786445, 1, 65540, 786458, 1, 65540, 786471, 1, 65536, 786472, 1, 65538, 786479, 1, 65540, 786551, 1, 65536, 786552, 1, 65538, 917503, 1, 65536, 851968, 1, 65546, 851969, 1, 262145, 851970, 1, 262145, 851971, 1, 262145, 851972, 1, 262145, 851973, 1, 262145, 851974, 1, 262145, 851975, 1, 262145, 851976, 1, 262145, 851977, 1, 262145, 851978, 1, 262145, 851979, 1, 262145, 851980, 1, 262145, 851981, 1, 262160, 851994, 1, 262159, 851995, 1, 262145, 851996, 1, 262145, 851997, 1, 262145, 851998, 1, 262145, 851999, 1, 262145, 852000, 1, 262145, 852001, 1, 262145, 852002, 1, 262145, 852003, 1, 262145, 852004, 1, 262145, 852005, 1, 262145, 852006, 1, 262145, 852007, 1, 9, 852008, 1, 65538, 852015, 1, 65540, 852022, 1, 196623, 852023, 1, 262145, 852024, 1, 262146, 852045, 1, 262144, 852046, 1, 262145, 852047, 1, 196615, 852048, 1, 196614, 852049, 1, 262145, 852050, 1, 262146, 852081, 1, 262144, 852082, 1, 262145, 852083, 1, 196624, 852087, 1, 65536, 852088, 1, 65538, 983039, 1, 65536, 917504, 1, 65538, 917543, 1, 65536, 917544, 1, 65538, 917551, 1, 65540, 917558, 1, 65540, 917583, 1, 65536, 917584, 1, 65538, 917619, 1, 65540, 917623, 1, 65536, 917624, 1, 65538, 1048575, 1, 65536, 983040, 1, 65538, 983079, 1, 65536, 983080, 1, 65538, 983087, 1, 65540, 983094, 1, 65540, 983119, 1, 65536, 983120, 1, 65538, 983137, 1, 262144, 983138, 1, 262145, 983139, 1, 262146, 983155, 1, 65540, 983159, 1, 65536, 983160, 1, 65538, 1114111, 1, 65536, 1048576, 1, 65538, 1048615, 1, 65536, 1048616, 1, 65538, 1048623, 1, 131076, 1048630, 1, 65540, 1048655, 1, 65536, 1048656, 1, 65538, 1048691, 1, 65540, 1048695, 1, 65536, 1048696, 1, 65538, 1179647, 1, 65536, 1114112, 1, 65538, 1114151, 1, 131072, 1114152, 1, 131074, 1114166, 1, 65540, 1114191, 1, 65536, 1114192, 1, 65538, 1114227, 1, 65540, 1114231, 1, 65536, 1114232, 1, 65538, 1245183, 1, 65536, 1179648, 1, 65538, 1179702, 1, 65540, 1179727, 1, 65536, 1179728, 1, 65538, 1179763, 1, 65540, 1179767, 1, 65536, 1179768, 1, 65538, 1310719, 1, 65536, 1245184, 1, 65538, 1245238, 1, 65540, 1245263, 1, 65536, 1245264, 1, 65538, 1245299, 1, 65540, 1245303, 1, 65536, 1245304, 1, 65538, 1376255, 1, 65536, 1310720, 1, 65538, 1310774, 1, 65540, 1310799, 1, 65536, 1310800, 1, 65538, 1310835, 1, 65540, 1310839, 1, 65536, 1310840, 1, 65538, 1441791, 1, 65536, 1376256, 1, 65542, 1376257, 1, 1, 1376258, 1, 1, 1376259, 1, 1, 1376260, 1, 1, 1376261, 1, 1, 1376262, 1, 1, 1376263, 1, 1, 1376264, 1, 1, 1376265, 1, 1, 1376266, 1, 1, 1376267, 1, 1, 1376268, 1, 1, 1376269, 1, 1, 1376270, 1, 1, 1376271, 1, 1, 1376272, 1, 1, 1376273, 1, 1, 1376274, 1, 1, 1376275, 1, 1, 1376276, 1, 1, 1376277, 1, 1, 1376278, 1, 1, 1376279, 1, 1, 1376280, 1, 1, 1376281, 1, 1, 1376282, 1, 1, 1376283, 1, 1, 1376284, 1, 1, 1376285, 1, 1, 1376286, 1, 1, 1376287, 1, 1, 1376288, 1, 1, 1376289, 1, 1, 1376290, 1, 1, 1376291, 1, 1, 1376292, 1, 1, 1376293, 1, 1, 1376294, 1, 1, 1376295, 1, 1, 1376296, 1, 1, 1376297, 1, 1, 1376298, 1, 1, 1376299, 1, 1, 1376300, 1, 1, 1376301, 1, 1, 1376302, 1, 1, 1376303, 1, 1, 1376304, 1, 1, 1376305, 1, 1, 1376306, 1, 1, 1376307, 1, 1, 1376308, 1, 1, 1376309, 1, 1, 1376310, 1, 10, 1376311, 1, 1, 1376312, 1, 1, 1376313, 1, 1, 1376314, 1, 1, 1376315, 1, 1, 1376316, 1, 1, 1376317, 1, 1, 1376318, 1, 1, 1376319, 1, 1, 1376320, 1, 1, 1376321, 1, 1, 1376322, 1, 1, 1376323, 1, 1, 1376324, 1, 1, 1376325, 1, 1, 1376326, 1, 1, 1376327, 1, 1, 1376328, 1, 1, 1376329, 1, 1, 1376330, 1, 1, 1376331, 1, 1, 1376332, 1, 1, 1376333, 1, 1, 1376334, 1, 1, 1376335, 1, 65543, 1376336, 1, 65538, 1376371, 1, 65540, 1376375, 1, 65536, 1376376, 1, 65538, 1507327, 1, 131072, 1441792, 1, 131073, 1441793, 1, 131073, 1441794, 1, 131073, 1441795, 1, 131073, 1441796, 1, 131073, 1441797, 1, 131073, 1441798, 1, 131073, 1441799, 1, 131073, 1441800, 1, 131073, 1441801, 1, 131073, 1441802, 1, 131073, 1441803, 1, 131073, 1441804, 1, 131073, 1441805, 1, 131073, 1441806, 1, 131073, 1441807, 1, 131073, 1441808, 1, 131073, 1441809, 1, 131073, 1441810, 1, 131073, 1441811, 1, 131073, 1441812, 1, 131073, 1441813, 1, 131073, 1441814, 1, 131073, 1441815, 1, 131073, 1441816, 1, 131073, 1441817, 1, 131073, 1441818, 1, 131073, 1441819, 1, 131073, 1441820, 1, 131073, 1441821, 1, 131073, 1441822, 1, 131073, 1441823, 1, 131073, 1441824, 1, 131073, 1441825, 1, 131073, 1441826, 1, 131073, 1441827, 1, 131073, 1441828, 1, 131073, 1441829, 1, 131073, 1441830, 1, 131073, 1441831, 1, 131073, 1441832, 1, 131073, 1441833, 1, 131073, 1441834, 1, 131073, 1441835, 1, 131073, 1441836, 1, 131073, 1441837, 1, 131073, 1441838, 1, 131073, 1441839, 1, 131073, 1441840, 1, 131073, 1441841, 1, 131073, 1441842, 1, 131073, 1441843, 1, 131073, 1441844, 1, 131073, 1441845, 1, 131073, 1441846, 1, 131073, 1441847, 1, 131073, 1441848, 1, 131073, 1441849, 1, 131073, 1441850, 1, 131073, 1441851, 1, 131073, 1441852, 1, 131073, 1441853, 1, 131073, 1441854, 1, 131073, 1441855, 1, 131073, 1441856, 1, 131073, 1441857, 1, 131073, 1441858, 1, 131073, 1441859, 1, 131073, 1441860, 1, 131073, 1441861, 1, 131073, 1441862, 1, 131073, 1441863, 1, 131073, 1441864, 1, 131073, 1441865, 1, 131073, 1441866, 1, 131073, 1441867, 1, 131073, 1441868, 1, 131073, 1441869, 1, 131073, 1441870, 1, 131073, 1441871, 1, 7, 1441872, 1, 65542, 1441873, 1, 1, 1441874, 1, 1, 1441875, 1, 1, 1441876, 1, 1, 1441877, 1, 1, 1441878, 1, 1, 1441879, 1, 1, 1441880, 1, 1, 1441881, 1, 1, 1441882, 1, 1, 1441883, 1, 1, 1441884, 1, 1, 1441885, 1, 1, 1441886, 1, 1, 1441887, 1, 1, 1441888, 1, 1, 1441889, 1, 1, 1441890, 1, 1, 1441891, 1, 1, 1441892, 1, 1, 1441893, 1, 1, 1441894, 1, 1, 1441895, 1, 1, 1441896, 1, 1, 1441897, 1, 1, 1441898, 1, 1, 1441899, 1, 1, 1441900, 1, 1, 1441901, 1, 1, 1441902, 1, 1, 1441903, 1, 1, 1441904, 1, 1, 1441905, 1, 1, 1441906, 1, 1, 1441907, 1, 262154, 1441911, 1, 65536, 1441912, 1, 65546, 1441913, 1, 262145, 1441914, 1, 262145, 1441915, 1, 262145, 1441916, 1, 262145, 1441917, 1, 262145, 1441918, 1, 262145, 1441919, 1, 262145, 1441920, 1, 262145, 1441921, 1, 262145, 1441922, 1, 262145, 1441923, 1, 262145, 1441924, 1, 262145, 1441925, 1, 262145, 1441926, 1, 262145, 1441927, 1, 262145, 1441928, 1, 262145, 1441929, 1, 262145, 1441930, 1, 262145, 1441931, 1, 262145, 1441932, 1, 262145, 1441933, 1, 262145, 1441934, 1, 262145, 1441935, 1, 262145, 1441936, 1, 262145, 1441937, 1, 262145, 1441938, 1, 262145, 1441939, 1, 262145, 1441940, 1, 262145, 1441941, 1, 262145, 1441942, 1, 262145, 1441943, 1, 262145, 1441944, 1, 262145, 1441945, 1, 262145, 1441946, 1, 262145, 1441947, 1, 262145, 1441948, 1, 262145, 1441949, 1, 262145, 1441950, 1, 262145, 1441951, 1, 262145, 1441952, 1, 262145, 1441953, 1, 262145, 1441954, 1, 262145, 1441955, 1, 262145, 1441956, 1, 262145, 1441957, 1, 262145, 1441958, 1, 262145, 1441959, 1, 262145, 1441960, 1, 262145, 1441961, 1, 262145, 1441962, 1, 262145, 1441963, 1, 262145, 1441964, 1, 262145, 1441965, 1, 262145, 1441966, 1, 262145, 1441967, 1, 262145, 1441968, 1, 262145, 1441969, 1, 262145, 1441970, 1, 262145, 1441971, 1, 262145, 1441972, 1, 262145, 1441973, 1, 262145, 1441974, 1, 262145, 1441975, 1, 262145, 1441976, 1, 262145, 1441977, 1, 262145, 1441978, 1, 262145, 1441979, 1, 262145, 1441980, 1, 262145, 1441981, 1, 262145, 1441982, 1, 262145, 1441983, 1, 262145, 1441984, 1, 262145, 1441985, 1, 262145, 1441986, 1, 262145, 1441987, 1, 262145, 1441988, 1, 262145, 1441989, 1, 262145, 1441990, 1, 262145, 1441991, 1, 196615, 1441992, 1, 2, 1507407, 1, 65536, 1507408, 1, 65537, 1507409, 1, 65537, 1507410, 1, 65537, 1507411, 1, 65537, 1507412, 1, 6, 1507413, 1, 131073, 1507414, 1, 131073, 1507415, 1, 131073, 1507416, 1, 131073, 1507417, 1, 131073, 1507418, 1, 131073, 1507419, 1, 131073, 1507420, 1, 131073, 1507421, 1, 131073, 1507422, 1, 131073, 1507423, 1, 131073, 1507424, 1, 131073, 1507425, 1, 131073, 1507426, 1, 131073, 1507427, 1, 131073, 1507428, 1, 131073, 1507429, 1, 131073, 1507430, 1, 131073, 1507431, 1, 131073, 1507432, 1, 131073, 1507433, 1, 131073, 1507434, 1, 131073, 1507435, 1, 131073, 1507436, 1, 131073, 1507437, 1, 131073, 1507438, 1, 131073, 1507439, 1, 131073, 1507440, 1, 131073, 1507441, 1, 131073, 1507442, 1, 131073, 1507443, 1, 131074, 1507447, 1, 65536, 1507448, 1, 65538, 1507527, 1, 65536, 1507528, 1, 65538, 1572943, 1, 65536, 1572944, 1, 65537, 1572945, 1, 65537, 1572946, 1, 65537, 1572947, 1, 65537, 1572948, 1, 65538, 1572983, 1, 65536, 1572984, 1, 65538, 1573063, 1, 65536, 1573064, 1, 65538, 1638479, 1, 65536, 1638480, 1, 65537, 1638481, 1, 65537, 1638482, 1, 65537, 1638483, 1, 65537, 1638484, 1, 65538, 1638519, 1, 65536, 1638520, 1, 65538, 1638599, 1, 65536, 1638600, 1, 65538, 1704015, 1, 65536, 1704016, 1, 65537, 1704017, 1, 65537, 1704018, 1, 65537, 1704019, 1, 65537, 1704020, 1, 65538, 1704055, 1, 65536, 1704056, 1, 65538, 1704135, 1, 65536, 1704136, 1, 65538, 1769551, 1, 65536, 1769552, 1, 65537, 1769553, 1, 65537, 1769554, 1, 65537, 1769555, 1, 65537, 1769556, 1, 65538, 1769591, 1, 65536, 1769592, 1, 65538, 1769657, 1, 0, 1769658, 1, 1, 1769659, 1, 2, 1769671, 1, 65536, 1769672, 1, 65538, 1835087, 1, 65536, 1835088, 1, 65537, 1835089, 1, 65537, 1835090, 1, 65537, 1835091, 1, 65537, 1835092, 1, 65538, 1835127, 1, 65536, 1835128, 1, 65538, 1835170, 1, 0, 1835171, 1, 1, 1835172, 1, 1, 1835173, 1, 1, 1835174, 1, 1, 1835175, 1, 2, 1835192, 1, 0, 1835193, 1, 65543, 1835194, 1, 65537, 1835195, 1, 65538, 1835207, 1, 65536, 1835208, 1, 65538, 1900623, 1, 65536, 1900624, 1, 65537, 1900625, 1, 65537, 1900626, 1, 65537, 1900627, 1, 65537, 1900628, 1, 65538, 1900663, 1, 65536, 1900664, 1, 65542, 1900665, 1, 1, 1900666, 1, 1, 1900667, 1, 2, 1900674, 1, 0, 1900675, 1, 1, 1900676, 1, 1, 1900677, 1, 1, 1900678, 1, 1, 1900679, 1, 1, 1900680, 1, 1, 1900681, 1, 1, 1900682, 1, 1, 1900683, 1, 1, 1900684, 1, 1, 1900685, 1, 1, 1900686, 1, 1, 1900687, 1, 1, 1900688, 1, 1, 1900689, 1, 1, 1900690, 1, 1, 1900691, 1, 1, 1900692, 1, 1, 1900693, 1, 1, 1900694, 1, 1, 1900695, 1, 1, 1900696, 1, 1, 1900697, 1, 1, 1900698, 1, 1, 1900699, 1, 1, 1900700, 1, 1, 1900701, 1, 1, 1900702, 1, 1, 1900703, 1, 1, 1900704, 1, 1, 1900705, 1, 1, 1900706, 1, 65543, 1900707, 1, 65537, 1900708, 1, 65537, 1900709, 1, 65537, 1900710, 1, 65537, 1900711, 1, 65542, 1900712, 1, 1, 1900713, 1, 1, 1900714, 1, 1, 1900715, 1, 1, 1900716, 1, 1, 1900717, 1, 1, 1900718, 1, 1, 1900719, 1, 1, 1900720, 1, 1, 1900721, 1, 1, 1900722, 1, 1, 1900723, 1, 1, 1900724, 1, 1, 1900725, 1, 1, 1900726, 1, 1, 1900727, 1, 1, 1900728, 1, 65543, 1900729, 1, 65537, 1900730, 1, 65537, 1900731, 1, 65542, 1900732, 1, 1, 1900733, 1, 1, 1900734, 1, 2, 1900743, 1, 65536, 1900744, 1, 65538, 1966159, 1, 65536, 1966160, 1, 65537, 1966161, 1, 65537, 1966162, 1, 65537, 1966163, 1, 65537, 1966164, 1, 65538, 1966171, 1, 262148, 1966178, 1, 262148, 1966185, 1, 262148, 1966192, 1, 262148, 1966199, 1, 65536, 1966200, 1, 65537, 1966201, 1, 65537, 1966202, 1, 65537, 1966203, 1, 65542, 1966204, 1, 2, 1966210, 1, 65536, 1966211, 1, 65537, 1966212, 1, 65537, 1966213, 1, 65537, 1966214, 1, 65537, 1966215, 1, 65537, 1966216, 1, 65537, 1966217, 1, 65537, 1966218, 1, 65537, 1966219, 1, 65537, 1966220, 1, 65537, 1966221, 1, 65537, 1966222, 1, 65537, 1966223, 1, 65537, 1966224, 1, 65537, 1966225, 1, 65537, 1966226, 1, 65537, 1966227, 1, 65537, 1966228, 1, 65537, 1966229, 1, 65537, 1966230, 1, 65537, 1966231, 1, 65537, 1966232, 1, 65537, 1966233, 1, 65537, 1966234, 1, 65537, 1966235, 1, 65537, 1966236, 1, 65537, 1966237, 1, 65537, 1966238, 1, 65537, 1966239, 1, 65537, 1966240, 1, 65537, 1966241, 1, 65537, 1966242, 1, 65537, 1966243, 1, 65537, 1966244, 1, 65537, 1966245, 1, 65537, 1966246, 1, 65537, 1966247, 1, 65537, 1966248, 1, 65537, 1966249, 1, 65537, 1966250, 1, 65537, 1966251, 1, 65537, 1966252, 1, 65537, 1966253, 1, 65537, 1966254, 1, 65537, 1966255, 1, 65537, 1966256, 1, 65537, 1966257, 1, 65537, 1966258, 1, 65537, 1966259, 1, 65537, 1966260, 1, 65537, 1966261, 1, 65537, 1966262, 1, 65537, 1966263, 1, 65537, 1966264, 1, 65537, 1966265, 1, 65537, 1966266, 1, 65537, 1966267, 1, 65537, 1966268, 1, 65537, 1966269, 1, 65537, 1966270, 1, 65538, 1966279, 1, 65536, 1966280, 1, 65538, 2031695, 1, 65536, 2031696, 1, 65537, 2031697, 1, 65537, 2031698, 1, 65537, 2031699, 1, 65537, 2031700, 1, 65538, 2031735, 1, 65536, 2031736, 1, 6, 2031737, 1, 131073, 2031738, 1, 131073, 2031739, 1, 131073, 2031740, 1, 262150, 2031741, 1, 262146, 2031746, 1, 131072, 2031747, 1, 131073, 2031748, 1, 131073, 2031749, 1, 131073, 2031750, 1, 131073, 2031751, 1, 131073, 2031752, 1, 131073, 2031753, 1, 131073, 2031754, 1, 131073, 2031755, 1, 131073, 2031756, 1, 131073, 2031757, 1, 131073, 2031758, 1, 131073, 2031759, 1, 131073, 2031760, 1, 131073, 2031761, 1, 131073, 2031762, 1, 7, 2031763, 1, 6, 2031764, 1, 131073, 2031765, 1, 131073, 2031766, 1, 131073, 2031767, 1, 131073, 2031768, 1, 131073, 2031769, 1, 131073, 2031770, 1, 131073, 2031771, 1, 131073, 2031772, 1, 131073, 2031773, 1, 131073, 2031774, 1, 131073, 2031775, 1, 7, 2031776, 1, 6, 2031777, 1, 131073, 2031778, 1, 131073, 2031779, 1, 131073, 2031780, 1, 131073, 2031781, 1, 131073, 2031782, 1, 131073, 2031783, 1, 131073, 2031784, 1, 131073, 2031785, 1, 131073, 2031786, 1, 131073, 2031787, 1, 131073, 2031788, 1, 7, 2031789, 1, 6, 2031790, 1, 131073, 2031791, 1, 131073, 2031792, 1, 131073, 2031793, 1, 131073, 2031794, 1, 131073, 2031795, 1, 131073, 2031796, 1, 131073, 2031797, 1, 131073, 2031798, 1, 131073, 2031799, 1, 131073, 2031800, 1, 131073, 2031801, 1, 131073, 2031802, 1, 131073, 2031803, 1, 131073, 2031804, 1, 131073, 2031805, 1, 131073, 2031806, 1, 131074, 2031815, 1, 65536, 2031816, 1, 65538, 2097231, 1, 65536, 2097232, 1, 65537, 2097233, 1, 65537, 2097234, 1, 65537, 2097235, 1, 65537, 2097236, 1, 65538, 2097271, 1, 65536, 2097272, 1, 65538, 2097298, 1, 65536, 2097299, 1, 65538, 2097311, 1, 65536, 2097312, 1, 65538, 2097324, 1, 65536, 2097325, 1, 65538, 2097351, 1, 65536, 2097352, 1, 65538, 2162767, 1, 65536, 2162768, 1, 65537, 2162769, 1, 65537, 2162770, 1, 65537, 2162771, 1, 65537, 2162772, 1, 65538, 2162807, 1, 65536, 2162808, 1, 65538, 2162834, 1, 65536, 2162835, 1, 65538, 2162847, 1, 65536, 2162848, 1, 65538, 2162860, 1, 65536, 2162861, 1, 65538, 2162887, 1, 65536, 2162888, 1, 65538, 2228303, 1, 65536, 2228304, 1, 65537, 2228305, 1, 65537, 2228306, 1, 65537, 2228307, 1, 65537, 2228308, 1, 65538, 2228343, 1, 65536, 2228344, 1, 65538, 2228370, 1, 65536, 2228371, 1, 65538, 2228383, 1, 65536, 2228384, 1, 65538, 2228396, 1, 65536, 2228397, 1, 65538, 2228423, 1, 65536, 2228424, 1, 65538, 2293839, 1, 65536, 2293840, 1, 65537, 2293841, 1, 65537, 2293842, 1, 65537, 2293843, 1, 65537, 2293844, 1, 65538, 2293879, 1, 65536, 2293880, 1, 65538, 2293906, 1, 65536, 2293907, 1, 65538, 2293919, 1, 65536, 2293920, 1, 65538, 2293932, 1, 65536, 2293933, 1, 65538, 2293959, 1, 65536, 2293960, 1, 65538, 2359375, 1, 65536, 2359376, 1, 65537, 2359377, 1, 65537, 2359378, 1, 65537, 2359379, 1, 65537, 2359380, 1, 65538, 2359415, 1, 65536, 2359416, 1, 65538, 2359435, 1, 262144, 2359436, 1, 262145, 2359437, 1, 262146, 2359442, 1, 131072, 2359443, 1, 131074, 2359448, 1, 262144, 2359449, 1, 262145, 2359450, 1, 262146, 2359455, 1, 131072, 2359456, 1, 131074, 2359461, 1, 262144, 2359462, 1, 262145, 2359463, 1, 262146, 2359468, 1, 131072, 2359469, 1, 131074, 2359474, 1, 262144, 2359475, 1, 262145, 2359476, 1, 262146, 2359495, 1, 65536, 2359496, 1, 65538, 2424911, 1, 65536, 2424912, 1, 65537, 2424913, 1, 65537, 2424914, 1, 65537, 2424915, 1, 65537, 2424916, 1, 65538, 2424923, 1, 262148, 2424930, 1, 262148, 2424937, 1, 262148, 2424944, 1, 262148, 2424951, 1, 65536, 2424952, 1, 65538, 2425031, 1, 65536, 2425032, 1, 65538, 2490447, 1, 65536, 2490448, 1, 65537, 2490449, 1, 65537, 2490450, 1, 65537, 2490451, 1, 65537, 2490452, 1, 65538, 2490487, 1, 65536, 2490488, 1, 65538, 2490567, 1, 65536, 2490568, 1, 65538, 2555983, 1, 65536, 2555984, 1, 65537, 2555985, 1, 65537, 2555986, 1, 65537, 2555987, 1, 65537, 2555988, 1, 65538, 2556023, 1, 65536, 2556024, 1, 65538, 2556103, 1, 65536, 2556104, 1, 65538, 2621519, 1, 65536, 2621520, 1, 65537, 2621521, 1, 65537, 2621522, 1, 65537, 2621523, 1, 65537, 2621524, 1, 65538, 2621559, 1, 131072, 2621560, 1, 131074, 2621566, 1, 0, 2621567, 1, 1, 2621568, 1, 1, 2621569, 1, 2, 2621631, 1, 0, 2621632, 1, 1, 2621633, 1, 1, 2621634, 1, 1, 2621635, 1, 1, 2621636, 1, 1, 2621637, 1, 1, 2621638, 1, 1, 2621639, 1, 65543, 2621640, 1, 65538, 2687055, 1, 65536, 2687056, 1, 65537, 2687057, 1, 65537, 2687058, 1, 65537, 2687059, 1, 65537, 2687060, 1, 65538, 2687101, 1, 0, 2687102, 1, 65543, 2687103, 1, 65537, 2687104, 1, 65537, 2687105, 1, 65538, 2687167, 1, 65536, 2687168, 1, 65537, 2687169, 1, 65537, 2687170, 1, 65537, 2687171, 1, 65537, 2687172, 1, 65537, 2687173, 1, 65537, 2687174, 1, 65537, 2687175, 1, 65537, 2687176, 1, 65538, 2752591, 1, 65536, 2752592, 1, 65537, 2752593, 1, 65537, 2752594, 1, 65537, 2752595, 1, 65537, 2752596, 1, 65538, 2752636, 1, 0, 2752637, 1, 65543, 2752638, 1, 65537, 2752639, 1, 65537, 2752640, 1, 65537, 2752641, 1, 65538, 2752703, 1, 65536, 2752704, 1, 65537, 2752705, 1, 65537, 2752706, 1, 65537, 2752707, 1, 65537, 2752708, 1, 65537, 2752709, 1, 65537, 2752710, 1, 65537, 2752711, 1, 65537, 2752712, 1, 65538, 2818127, 1, 65536, 2818128, 1, 65537, 2818129, 1, 65537, 2818130, 1, 65537, 2818131, 1, 65537, 2818132, 1, 65538, 2818171, 1, 0, 2818172, 1, 65543, 2818173, 1, 65537, 2818174, 1, 65537, 2818175, 1, 65537, 2818176, 1, 65537, 2818177, 1, 65538, 2818239, 1, 65536, 2818240, 1, 65537, 2818241, 1, 65537, 2818242, 1, 65537, 2818243, 1, 65537, 2818244, 1, 65537, 2818245, 1, 65537, 2818246, 1, 65537, 2818247, 1, 65537, 2818248, 1, 65538, 2883663, 1, 65536, 2883664, 1, 65537, 2883665, 1, 65537, 2883666, 1, 65537, 2883667, 1, 65537, 2883668, 1, 65542, 2883669, 1, 1, 2883670, 1, 1, 2883671, 1, 1, 2883672, 1, 1, 2883673, 1, 1, 2883674, 1, 1, 2883675, 1, 1, 2883676, 1, 1, 2883677, 1, 1, 2883678, 1, 1, 2883679, 1, 1, 2883680, 1, 1, 2883681, 1, 1, 2883682, 1, 1, 2883683, 1, 1, 2883684, 1, 1, 2883685, 1, 1, 2883686, 1, 1, 2883687, 1, 1, 2883688, 1, 1, 2883689, 1, 1, 2883690, 1, 1, 2883691, 1, 1, 2883692, 1, 1, 2883693, 1, 1, 2883694, 1, 1, 2883695, 1, 1, 2883696, 1, 1, 2883697, 1, 1, 2883698, 1, 1, 2883699, 1, 1, 2883700, 1, 1, 2883701, 1, 1, 2883702, 1, 1, 2883703, 1, 1, 2883704, 1, 1, 2883705, 1, 1, 2883706, 1, 1, 2883707, 1, 65543, 2883708, 1, 65537, 2883709, 1, 65537, 2883710, 1, 65537, 2883711, 1, 65537, 2883712, 1, 65537, 2883713, 1, 65538, 2883775, 1, 65536, 2883776, 1, 65537, 2883777, 1, 65537, 2883778, 1, 65537, 2883779, 1, 65537, 2883780, 1, 65537, 2883781, 1, 65537, 2883782, 1, 65537, 2883783, 1, 65537, 2883784, 1, 65538, 2949199, 1, 131072, 2949200, 1, 131073, 2949201, 1, 131073, 2949202, 1, 131073, 2949203, 1, 131073, 2949204, 1, 131073, 2949205, 1, 131073, 2949206, 1, 131073, 2949207, 1, 131073, 2949208, 1, 131073, 2949209, 1, 131073, 2949210, 1, 131073, 2949211, 1, 131073, 2949212, 1, 131073, 2949213, 1, 131073, 2949214, 1, 131073, 2949215, 1, 131073, 2949216, 1, 131073, 2949217, 1, 131073, 2949218, 1, 131073, 2949219, 1, 131073, 2949220, 1, 131073, 2949221, 1, 131073, 2949222, 1, 131073, 2949223, 1, 131073, 2949224, 1, 131073, 2949225, 1, 131073, 2949226, 1, 131073, 2949227, 1, 131073, 2949228, 1, 131073, 2949229, 1, 131073, 2949230, 1, 131073, 2949231, 1, 131073, 2949232, 1, 131073, 2949233, 1, 131073, 2949234, 1, 131073, 2949235, 1, 131073, 2949236, 1, 131073, 2949237, 1, 131073, 2949238, 1, 131073, 2949239, 1, 131073, 2949240, 1, 131073, 2949241, 1, 131073, 2949242, 1, 131073, 2949243, 1, 131073, 2949244, 1, 131073, 2949245, 1, 131073, 2949246, 1, 131073, 2949247, 1, 131073, 2949248, 1, 131073, 2949249, 1, 131074, 2949311, 1, 131072, 2949312, 1, 131073, 2949313, 1, 131073, 2949314, 1, 131073, 2949315, 1, 131073, 2949316, 1, 131073, 2949317, 1, 131073, 2949318, 1, 131073, 2949319, 1, 131073, 2949320, 1, 131074 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 640, 360 )
@@ -509,4 +1541,8 @@ script = ExtResource( 7 )
 
 [node name="HelperScreenBorders" type="Node2D" parent="."]
 script = ExtResource( 2 )
+screen_count_horizontal = 5
+screen_count_vertical = 2
 line_width = 6
+
+[editable path="LevelObjects/DebilTunnel/LaserPointTwo"]

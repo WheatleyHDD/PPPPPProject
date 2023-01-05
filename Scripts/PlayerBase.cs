@@ -42,7 +42,7 @@ public class PlayerBase : KinematicBody2D
     private AudioStreamPlayer2D land_player;
     private AudioStreamPlayer2D hit_player;
 
-    public Array<Toggle> interacted_items = new Array<Toggle>();
+    public Array<Node2D> interacted_items = new Array<Node2D>();
 
     // Сигналы
     [Signal] delegate void OnJump(int jump_count);
@@ -146,13 +146,16 @@ public class PlayerBase : KinematicBody2D
     }
 
     public void RestoreAll() {
-        foreach (Toggle i in interacted_items) {
-            i.Activated = false;
+        foreach (Node2D i in interacted_items) {
+            if (i is Toggle)
+                (i as Toggle).Activated = false;
+            else if (i is LocKey)
+                (i as LocKey).NotPick();
         }
         interacted_items.Clear();
     }
 
-    public void AddToInteracted(Toggle toggle) => interacted_items.Add(toggle);
+    public void AddToInteracted(Node2D node) => interacted_items.Add(node);
 
     void Animate() {
         char_model.Scale = new Vector2(last_dir * Mathf.Abs(char_model.Scale.x), char_model.Scale.y);

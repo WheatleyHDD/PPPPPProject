@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/LockBlocks.cs" type="Script" id=1]
+
+[node name="LockBlocks" type="Node2D" groups=["LockBreak"]]
+script = ExtResource( 1 )

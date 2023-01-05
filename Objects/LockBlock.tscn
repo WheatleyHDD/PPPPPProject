@@ -1,8 +1,12 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Sprites/lock_block.png" type="Texture" id=1]
 [ext_resource path="res://Shaders/whiteness.tres" type="Material" id=2]
 [ext_resource path="res://Sprites/lock_particles.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/LockBlock.cs" type="Script" id=4]
+[ext_resource path="res://Sounds/LockBreak/LockBreak1.wav" type="AudioStream" id=5]
+[ext_resource path="res://Sounds/LockBreak/LockBreak0.wav" type="AudioStream" id=6]
+[ext_resource path="res://Sounds/LockBreak/LockBreak2.wav" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
@@ -127,6 +131,10 @@ orbit_velocity_random = 0.0
 color_ramp = SubResource( 5 )
 
 [node name="LockBlock" type="StaticBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 4 )
+streamsToPlay = [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 16, 16 )
@@ -151,3 +159,5 @@ process_material = SubResource( 6 )
 texture = ExtResource( 3 )
 
 [node name="lockbreak" type="AudioStreamPlayer2D" parent="."]
+max_distance = 500.0
+bus = "sound"
