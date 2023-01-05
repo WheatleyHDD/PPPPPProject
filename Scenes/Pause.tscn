@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Fonts/Ubuntu.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scripts/PauseScreen.cs" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=2]
+size = 42
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="Theme" id=8]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 1, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0.643137, 0.643137, 0.643137, 1 )
+Button/colors/font_color_pressed = Color( 0.2, 0.2, 0.2, 1 )
+Button/fonts/font = SubResource( 2 )
+Button/styles/disabled = SubResource( 3 )
+Button/styles/focus = SubResource( 4 )
+Button/styles/hover = SubResource( 5 )
+Button/styles/normal = SubResource( 6 )
+Button/styles/pressed = SubResource( 7 )
+
+[node name="Pause" type="CanvasLayer"]
+pause_mode = 2
+layer = 2
+visible = false
+script = ExtResource( 2 )
+
+[node name="panel" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 352.0
+margin_right = 352.0
+
+[node name="bg" type="ColorRect" parent="panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 960.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Buttons" type="VBoxContainer" parent="panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -288.0
+margin_right = -32.0
+custom_constants/separation = 23
+alignment = 1
+
+[node name="Resume" type="Button" parent="panel/Buttons"]
+margin_top = 229.0
+margin_right = 256.0
+margin_bottom = 277.0
+theme = SubResource( 8 )
+text = "Продолжить"
+
+[node name="Restart" type="Button" parent="panel/Buttons"]
+margin_top = 300.0
+margin_right = 256.0
+margin_bottom = 348.0
+theme = SubResource( 8 )
+text = "Перезапуск"
+
+[node name="Settings" type="Button" parent="panel/Buttons"]
+margin_top = 371.0
+margin_right = 256.0
+margin_bottom = 419.0
+theme = SubResource( 8 )
+disabled = true
+text = "Настройки"
+
+[node name="Exit" type="Button" parent="panel/Buttons"]
+margin_top = 442.0
+margin_right = 256.0
+margin_bottom = 490.0
+theme = SubResource( 8 )
+text = "Выход"

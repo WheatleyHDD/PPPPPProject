@@ -31,7 +31,8 @@ public class FastDialogue : CanvasLayer
     public override void _Process(float delta)
     {
         if (!Visible) return;
-
+        if (!IsInstanceValid(_ci)) return;
+        
         // Звук диалога
         if (voice_count > 0) {
             if (!voice_player.Playing) {
@@ -74,9 +75,14 @@ public class FastDialogue : CanvasLayer
     }
 
     void OnDialogueEnd() {
-        query.RemoveAt(0);
+        if (query.Count > 0) query.RemoveAt(0);
         if (query.Count > 0) NextDialogue();
         else Hide();
+    }
+
+    public void StopAll() {
+        query.Clear();
+        Hide();
     }
 }
 

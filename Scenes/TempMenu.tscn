@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Shaders/BoxBlur.gdshader" type="Shader" id=1]
+[ext_resource path="res://Sprites/MenuAssets/prilojite_nos.jpg" type="Texture" id=2]
+[ext_resource path="res://Fonts/Ubuntu.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="GDScript" id=9]
+resource_name = "TempMenuScripts"
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_Play_pressed():
+	get_tree().change_scene(\"res://Scenes/Levels/Level1.tscn\")
+
+
+func _on_Exit_pressed():
+	get_tree().quit()
+
+
+func _on_Fullscreen_pressed():
+	OS.window_fullscreen = !OS.window_fullscreen
+"
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/strength = 20
+
+[sub_resource type="DynamicFont" id=10]
+size = 42
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="Theme" id=8]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 1, 0, 0, 1 )
+Button/colors/font_color_hover = Color( 0.643137, 0.643137, 0.643137, 1 )
+Button/colors/font_color_pressed = Color( 0.2, 0.2, 0.2, 1 )
+Button/fonts/font = SubResource( 10 )
+Button/styles/disabled = SubResource( 11 )
+Button/styles/focus = SubResource( 12 )
+Button/styles/hover = SubResource( 13 )
+Button/styles/normal = SubResource( 14 )
+Button/styles/pressed = SubResource( 15 )
+
+[node name="TempMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 9 )
+
+[node name="bg" type="TextureRect" parent="."]
+modulate = Color( 0.737255, 0.737255, 0.737255, 1 )
+material = SubResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="Fullscreen" type="Button" parent="."]
+margin_left = 928.0
+margin_top = 640.0
+margin_right = 1247.0
+margin_bottom = 688.0
+theme = SubResource( 8 )
+text = "Полный экран"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_right = 288.0
+custom_constants/separation = 23
+alignment = 1
+
+[node name="Play" type="Button" parent="Buttons"]
+margin_top = 265.0
+margin_right = 256.0
+margin_bottom = 313.0
+theme = SubResource( 8 )
+text = "Играть"
+
+[node name="Settings" type="Button" parent="Buttons"]
+margin_top = 336.0
+margin_right = 256.0
+margin_bottom = 384.0
+theme = SubResource( 8 )
+disabled = true
+text = "Настройки"
+
+[node name="Exit" type="Button" parent="Buttons"]
+margin_top = 407.0
+margin_right = 256.0
+margin_bottom = 455.0
+theme = SubResource( 8 )
+text = "Выход"
+
+[connection signal="pressed" from="Fullscreen" to="." method="_on_Fullscreen_pressed"]
+[connection signal="pressed" from="Buttons/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_Exit_pressed"]

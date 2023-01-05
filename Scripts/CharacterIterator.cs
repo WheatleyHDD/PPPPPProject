@@ -19,12 +19,20 @@ public class CharacterIterator : Node2D
     // Called every frame. 'delta' is the elapsed time since the previous frame.
     public override void _Process(float delta)
     {
+        if (GetCurrent().current && Input.IsActionJustPressed("ui_cancel")) {
+            GetTree().Paused = !GetTree().Paused;
+            GetNode<CanvasLayer>("/root/Pause").Visible = !GetNode<CanvasLayer>("/root/Pause").Visible;
+        }
+
+        if (GetTree().Paused) return;
+
         if (Input.IsActionJustPressed("next_char")) NextCharacter();
         if (Input.IsActionJustPressed("prev_char")) PrevCharacter();
         if (listener != null)
             listener.GlobalPosition = new Vector2(
                 Mathf.Lerp(listener.GlobalPosition.x, GetCurrent().GlobalPosition.x, 0.03f),
                 Mathf.Lerp(listener.GlobalPosition.y, GetCurrent().GlobalPosition.y, 0.03f));
+        
         Update();
     }
 
