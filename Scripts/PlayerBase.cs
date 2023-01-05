@@ -39,7 +39,6 @@ public class PlayerBase : KinematicBody2D
     private Node2D char_model;
 
     private AudioStreamPlayer2D jump_player;
-    private Listener2D listener;
     private AudioStreamPlayer2D land_player;
     private AudioStreamPlayer2D hit_player;
 
@@ -55,7 +54,6 @@ public class PlayerBase : KinematicBody2D
         jump_player = GetNode<AudioStreamPlayer2D>("Jump");
         base_animator = GetNode<AnimationPlayer>("BaseAnimator");
         char_animator = GetNode<AnimationPlayer>("CharModel/AnimationPlayer");
-        listener = GetNode<Listener2D>("Listener2D");
         land_player = GetNode<AudioStreamPlayer2D>("Land");
         hit_player = GetNode<AudioStreamPlayer2D>("Hit");
         char_model = GetNode<Node2D>("CharModel");
@@ -73,9 +71,6 @@ public class PlayerBase : KinematicBody2D
         if (!stopped_animation) Animate();
         // Получаем последний поворот
         if (current & h_move != 0) last_dir = (int)(h_move / Mathf.Abs(h_move));
-
-        if (current) listener.MakeCurrent();
-        else listener.ClearCurrent();
     }
 
     void HorizontalMovement(float delta)

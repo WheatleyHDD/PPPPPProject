@@ -5,12 +5,15 @@ public class CharacterIterator : Node2D
 {
     public int current_char = 0;
     public CameraMovement camera;
+    private Listener2D listener;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        if (GetChildCount() > 0)
-            SetCurrent(true);
+        listener = new Listener2D();
+        GetParent().CallDeferred("add_child", listener);
+        listener.MakeCurrent();
+        if (GetChildCount() > 0) SetCurrent(true);
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -18,6 +21,10 @@ public class CharacterIterator : Node2D
     {
         if (Input.IsActionJustPressed("next_char")) NextCharacter();
         if (Input.IsActionJustPressed("prev_char")) PrevCharacter();
+        if (listener != null)
+            listener.GlobalPosition = new Vector2(
+                Mathf.Lerp(listener.GlobalPosition.x, GetCurrent().GlobalPosition.x, 0.03f),
+                Mathf.Lerp(listener.GlobalPosition.y, GetCurrent().GlobalPosition.y, 0.03f));
         Update();
     }
 

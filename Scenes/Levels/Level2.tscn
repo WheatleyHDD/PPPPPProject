@@ -14,7 +14,7 @@
 [ext_resource path="res://Objects/BulkBlock.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/CheckPoint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/Spikes.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Sprites/backgrounds/sklad.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/backgrounds/fucktory.png" type="Texture" id=15]
 [ext_resource path="res://Shaders/BoxBlur.gdshader" type="Shader" id=16]
 [ext_resource path="res://Objects/End.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Levels/Level3.tscn" type="PackedScene" id=18]
@@ -502,13 +502,15 @@ script = ExtResource( 4 )
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.2, 0 )
-motion_offset = Vector2( -640, -360 )
+motion_scale = Vector2( 0.1, 0 )
+motion_offset = Vector2( 0, -360 )
+motion_mirroring = Vector2( 1279, 0 )
 
-[node name="Sklad" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Fucktory" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
 material = SubResource( 50 )
-scale = Vector2( 0.667, 0.667 )
+position = Vector2( -6, 0 )
+scale = Vector2( 0.67, 0.67 )
 texture = ExtResource( 15 )
 centered = false
 

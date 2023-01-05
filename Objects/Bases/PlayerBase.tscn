@@ -73,8 +73,6 @@ position = Vector2( 0, 32 )
 texture = ExtResource( 1 )
 offset = Vector2( 0, -32 )
 
-[node name="Listener2D" type="Listener2D" parent="."]
-
 [node name="BaseAnimator" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 2 )
 anims/jump = SubResource( 3 )
