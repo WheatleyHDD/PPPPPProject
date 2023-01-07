@@ -118,7 +118,7 @@ class DialogueData {
     public AudioStream DialogueVoice;
     public float DialogueVolume;
 
-    public DialogueData(string name, string text, AudioStream voice, float volume = 0) {
+    public DialogueData(string name, string text, AudioStream voice, float volume = 6) {
         DialogueName = name;
         DialogueText = text;
         DialogueVoice = voice;
