@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bleep006.wav-f738ce2ca3e9b9b079b374ea2f3ef301.sample"
+
+[deps]
+
+source_file="res://Sounds/bleeps/bleep006.wav"
+dest_files=[ "res://.import/bleep006.wav-f738ce2ca3e9b9b079b374ea2f3ef301.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -57,6 +57,6 @@ public class EndScript : Sprite
     }
     public void ChangeScene() {
         GetTree().ChangeSceneTo(nextLevel);
-        GetNode("/root/FancyFade").Call("tile_reveal", nextLevel.Instance());
+        //GetNode("/root/FancyFade").Call("tile_reveal", nextLevel.Instance());
     }
 }

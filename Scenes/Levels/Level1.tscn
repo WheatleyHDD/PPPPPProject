@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://Sprites/solid.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LevelBuilder/HelperScreenBorders.cs" type="Script" id=2]
@@ -13,13 +13,14 @@
 [ext_resource path="res://Objects/LaserPoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Objects/FastDialTrigger.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Scripts/Resources/FastDialogueContainer.gd" type="Script" id=13]
-[ext_resource path="res://Sounds/voice_test.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Sounds/bleeps/bleep018.wav" type="AudioStream" id=14]
 [ext_resource path="res://Shaders/BoxBlur.gdshader" type="Shader" id=15]
 [ext_resource path="res://Objects/Toggle.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Objects/End.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Levels/Level2.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Objects/Models/CharModel.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Sprites/character2.png" type="Texture" id=20]
+[ext_resource path="res://Sounds/bleeps/bleep015.wav" type="AudioStream" id=21]
 
 [sub_resource type="ShaderMaterial" id=56]
 shader = ExtResource( 15 )
@@ -28,14 +29,14 @@ shader_param/strength = 4
 [sub_resource type="Resource" id=51]
 script = ExtResource( 13 )
 name = "ГГ"
-text = "Эм... Это что, моя работа?"
-voice = ExtResource( 14 )
+text = "Так… Где это я? Это что, моя работа? Странно…"
+voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=53]
 script = ExtResource( 13 )
 name = "ГГ"
-text = "Но какой сегодня день?"
-voice = ExtResource( 14 )
+text = "Надо найти кого-нибудь."
+voice = ExtResource( 21 )
 
 [sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 32, 224 )
@@ -44,12 +45,42 @@ extents = Vector2( 32, 224 )
 script = ExtResource( 13 )
 name = "ГГ"
 text = "Я думаю тут можно пролезть"
-voice = ExtResource( 14 )
+voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=58]
 script = ExtResource( 13 )
 name = "ГГ"
 text = "Вот бы здесь как в играх можно было сделать подкат нажатием стрелки ВНИЗ"
+voice = ExtResource( 21 )
+
+[sub_resource type="Resource" id=59]
+script = ExtResource( 13 )
+name = "ГГ"
+text = "Откуда вообще эти ловушки? Какие-то двери, лазеры…"
+voice = ExtResource( 21 )
+
+[sub_resource type="Resource" id=60]
+script = ExtResource( 13 )
+name = "ГГ"
+text = "Даже когда я в них попадаю все начинается заново! Безумие какое-то…"
+voice = ExtResource( 21 )
+
+[sub_resource type="Resource" id=61]
+script = ExtResource( 13 )
+name = "ДД"
+text = "ПОМОГИТЕ!!!"
+voice = ExtResource( 14 )
+
+[sub_resource type="Resource" id=62]
+script = ExtResource( 13 )
+name = "ГГ"
+text = "Ты кто еще такой? И п-почему ты похож на меня?!"
+voice = ExtResource( 21 )
+
+[sub_resource type="Resource" id=63]
+script = ExtResource( 13 )
+name = "ДД"
+text = "Ну… А лучше ты поможешь мне выбраться отсюда"
 voice = ExtResource( 14 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -901,6 +932,22 @@ position = Vector2( 1952, 512 )
 query = [ SubResource( 57 ), SubResource( 58 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger2"]
+position = Vector2( 0, -64 )
+shape = SubResource( 50 )
+
+[node name="FastDialTrigger3" parent="LevelObjects" instance=ExtResource( 12 )]
+position = Vector2( 3168, 512 )
+query = [ SubResource( 59 ), SubResource( 60 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger3"]
+position = Vector2( 0, -64 )
+shape = SubResource( 50 )
+
+[node name="FastDialTrigger4" parent="LevelObjects" instance=ExtResource( 12 )]
+position = Vector2( 5312, 1248 )
+query = [ SubResource( 61 ), SubResource( 62 ), SubResource( 63 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger4"]
 position = Vector2( 0, -64 )
 shape = SubResource( 50 )
 

@@ -40,5 +40,5 @@ valign = 1
 bus = "sound"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 2.5
 one_shot = true

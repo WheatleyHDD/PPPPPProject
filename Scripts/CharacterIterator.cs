@@ -6,6 +6,7 @@ public class CharacterIterator : Node2D
     public int current_char = 0;
     public CameraMovement camera;
     private Listener2D listener;
+    public bool LevelChanging = false;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -24,14 +25,15 @@ public class CharacterIterator : Node2D
             GetNode<CanvasLayer>("/root/Pause").Visible = !GetNode<CanvasLayer>("/root/Pause").Visible;
         }
 
-        if (GetTree().Paused) return;
-
+        if (GetTree().Paused || LevelChanging) return;
+        
         if (Input.IsActionJustPressed("next_char")) NextCharacter();
         if (Input.IsActionJustPressed("prev_char")) PrevCharacter();
-        if (listener != null)
+        if (IsInstanceValid(listener)) {
             listener.GlobalPosition = new Vector2(
                 Mathf.Lerp(listener.GlobalPosition.x, GetCurrent().GlobalPosition.x, 0.03f),
                 Mathf.Lerp(listener.GlobalPosition.y, GetCurrent().GlobalPosition.y, 0.03f));
+        }
         
         Update();
     }

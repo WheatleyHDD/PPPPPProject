@@ -25,7 +25,8 @@ func _ready():
 
 
 func _on_Play_pressed():
-	get_tree().change_scene(\"res://Scenes/Levels/Level1.tscn\")
+	var nextLevel = load(\"res://Scenes/Levels/Level1.tscn\")
+	get_tree().change_scene_to(nextLevel)
 
 
 func _on_Exit_pressed():
