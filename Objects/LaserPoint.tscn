@@ -24,6 +24,7 @@ default_color = Color( 0.827451, 0, 0, 1 )
 [node name="smoke" parent="." instance=ExtResource( 3 )]
 position = Vector2( 32, -16 )
 rotation = -1.57079
+amount = 6
 
 [node name="OnOffTimer" type="Timer" parent="."]
 one_shot = true

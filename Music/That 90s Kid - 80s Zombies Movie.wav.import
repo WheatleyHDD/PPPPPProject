@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/That 90s Kid - 80s Zombies Movie.wav-0743c9a9f6f556c47dda5c8f6774de33.sample"
+
+[deps]
+
+source_file="res://Music/That 90s Kid - 80s Zombies Movie.wav"
+dest_files=[ "res://.import/That 90s Kid - 80s Zombies Movie.wav-0743c9a9f6f556c47dda5c8f6774de33.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

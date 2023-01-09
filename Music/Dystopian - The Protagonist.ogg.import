@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dystopian - The Protagonist.ogg-16f14e4007f2ca9cba973b25861e32ab.oggstr"
+
+[deps]
+
+source_file="res://Music/Dystopian - The Protagonist.ogg"
+dest_files=[ "res://.import/Dystopian - The Protagonist.ogg-16f14e4007f2ca9cba973b25861e32ab.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

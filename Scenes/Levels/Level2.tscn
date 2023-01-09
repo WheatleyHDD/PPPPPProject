@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Sprites/solid.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LevelBuilder/HelperScreenBorders.cs" type="Script" id=2]
@@ -14,14 +14,46 @@
 [ext_resource path="res://Objects/BulkBlock.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Objects/CheckPoint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/Spikes.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Sprites/backgrounds/fucktory.png" type="Texture" id=15]
-[ext_resource path="res://Shaders/BoxBlur.gdshader" type="Shader" id=16]
+[ext_resource path="res://Objects/Bgs/Bg1.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scripts/Resources/FastDialogueContainer.gd" type="Script" id=16]
 [ext_resource path="res://Objects/End.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Scenes/Levels/Level3.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Objects/FastDialTrigger.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Sounds/bleeps/bleep015.wav" type="AudioStream" id=20]
+[ext_resource path="res://Sounds/bleeps/bleep020.wav" type="AudioStream" id=21]
 
-[sub_resource type="ShaderMaterial" id=50]
-shader = ExtResource( 16 )
-shader_param/strength = 4
+[sub_resource type="Resource" id=51]
+script = ExtResource( 16 )
+name = "ГГ"
+text = "Давай за мной!"
+voice = ExtResource( 20 )
+
+[sub_resource type="Resource" id=53]
+script = ExtResource( 16 )
+name = "ДД"
+text = "Прости, я не умею делать подкаты"
+voice = ExtResource( 21 )
+
+[sub_resource type="Resource" id=55]
+script = ExtResource( 16 )
+name = "ГГ"
+text = "Но как мы выберемся отсюда?"
+voice = ExtResource( 20 )
+
+[sub_resource type="Resource" id=56]
+script = ExtResource( 16 )
+name = "ГГ"
+text = "Только если ты сможешь ДВА РАЗА прыгнуть"
+voice = ExtResource( 20 )
+
+[sub_resource type="RectangleShape2D" id=54]
+extents = Vector2( 32, 224 )
+
+[sub_resource type="Resource" id=57]
+script = ExtResource( 16 )
+name = "ГГ"
+text = "Погоди, это как?"
+voice = ExtResource( 20 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -499,20 +531,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 4 )
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.1, 0 )
-motion_offset = Vector2( 0, -360 )
-motion_mirroring = Vector2( 1279, 0 )
-
-[node name="Fucktory" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
-material = SubResource( 50 )
-position = Vector2( -6, 0 )
-scale = Vector2( 0.67, 0.67 )
-texture = ExtResource( 15 )
-centered = false
+[node name="ParallaxBackground" parent="." instance=ExtResource( 15 )]
 
 [node name="LevelHelpers" type="Node2D" parent="."]
 
@@ -775,6 +794,30 @@ rotation = -3.14159
 position = Vector2( 6272, 224 )
 rotation = -3.14159
 
+[node name="Spikes14" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 4352, 608 )
+rotation = -3.14159
+
+[node name="Spikes15" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 4384, 608 )
+rotation = -3.14159
+
+[node name="Spikes16" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 4416, 608 )
+rotation = -3.14159
+
+[node name="Spikes17" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 4640, 608 )
+rotation = -3.14159
+
+[node name="Spikes18" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 4672, 608 )
+rotation = -3.14159
+
+[node name="Spikes19" parent="LevelObjects" instance=ExtResource( 14 )]
+position = Vector2( 4704, 608 )
+rotation = -3.14159
+
 [node name="LaserPoint26" parent="LevelObjects" instance=ExtResource( 10 )]
 position = Vector2( 6176, 288 )
 rotation = 1.57079
@@ -857,6 +900,28 @@ scale = Vector2( 1.99999, 1.5 )
 dialogueStart = "/cutscene2"
 nextLevel = ExtResource( 18 )
 spawnDoor = true
+
+[node name="FastDialTrigger" parent="LevelObjects" instance=ExtResource( 19 )]
+position = Vector2( 704, 576 )
+__meta__ = {
+"_edit_group_": true
+}
+query = [ SubResource( 51 ), SubResource( 53 ), SubResource( 55 ), SubResource( 56 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger"]
+position = Vector2( 0, -64 )
+shape = SubResource( 54 )
+
+[node name="FastDialTrigger2" parent="LevelObjects" instance=ExtResource( 19 )]
+position = Vector2( 256, 352 )
+__meta__ = {
+"_edit_group_": true
+}
+query = [ SubResource( 57 ) ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger2"]
+position = Vector2( 0, -64 )
+shape = SubResource( 54 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )

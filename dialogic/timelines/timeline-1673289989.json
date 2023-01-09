@@ -1,0 +1,130 @@
+{
+	"events": [
+		{
+			"background": "res://Sprites/backgrounds/sklad_vn.png",
+			"event_id": "dialogic_021"
+		},
+		{
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 0.5,
+			"animation_wait": false,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1671808202.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": true,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"animation": "2-fade_in_up.gd",
+			"animation_length": 0.5,
+			"animation_wait": true,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1671808213.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": true,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1671808213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Почему ты играешь всегда после работы?"
+		},
+		{
+			"character": "character-1671808202.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "А чем мне еще заняться?"
+		},
+		{
+			"character": "character-1671808213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Ты мог бы изучать что-то полезное для себя или новое."
+		},
+		{
+			"character": "character-1671808202.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Зачем?"
+		},
+		{
+			"character": "character-1671808213.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Не зря тебя сюда отправило…"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1671808202.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"animation_wait": true,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1671808213.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"emit_signal": "end",
+			"event_id": "dialogic_040"
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.5",
+		"file": "timeline-1673289989.json",
+		"name": "cutscene3"
+	}
+}

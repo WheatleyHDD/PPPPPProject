@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Sprites/backgrounds/fucktory_blur.png" type="Texture" id=1]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2( 0.1, 0 )
+motion_offset = Vector2( 0, -360 )
+motion_mirroring = Vector2( 1279, 0 )
+
+[node name="Fucktory" type="Sprite" parent="ParallaxLayer"]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+position = Vector2( -6, 0 )
+scale = Vector2( 0.67, 0.67 )
+texture = ExtResource( 1 )
+centered = false

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Alexander Ehlers - Warped.ogg-05a0b42b309c250880058152e85ff072.oggstr"
+
+[deps]
+
+source_file="res://Music/Alexander Ehlers - Warped.ogg"
+dest_files=[ "res://.import/Alexander Ehlers - Warped.ogg-05a0b42b309c250880058152e85ff072.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

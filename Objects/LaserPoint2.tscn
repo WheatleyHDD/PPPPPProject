@@ -28,6 +28,7 @@ default_color = Color( 0.827451, 0, 0, 1 )
 [node name="smoke" parent="Laser1" instance=ExtResource( 3 )]
 position = Vector2( 32, -23 )
 rotation = -1.57079
+amount = 4
 
 [node name="OnOffTimer" type="Timer" parent="Laser1"]
 one_shot = true
@@ -50,6 +51,7 @@ default_color = Color( 0.827451, 0, 0, 1 )
 [node name="smoke" parent="Laser2" instance=ExtResource( 3 )]
 position = Vector2( 32, -9 )
 rotation = -1.57079
+amount = 4
 
 [node name="OnOffTimer" type="Timer" parent="Laser2"]
 one_shot = true

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Dystopian - Distopian.ogg-2dd80462cee8fd32f4329631ee1fddf3.oggstr"
+
+[deps]
+
+source_file="res://Music/Dystopian - Distopian.ogg"
+dest_files=[ "res://.import/Dystopian - Distopian.ogg-2dd80462cee8fd32f4329631ee1fddf3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

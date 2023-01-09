@@ -159,5 +159,5 @@ process_material = SubResource( 6 )
 texture = ExtResource( 3 )
 
 [node name="lockbreak" type="AudioStreamPlayer2D" parent="."]
-max_distance = 500.0
+max_distance = 1000.0
 bus = "sound"
