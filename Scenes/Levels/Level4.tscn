@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=71 format=2]
 
 [ext_resource path="res://Sprites/solid.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LevelBuilder/HelperScreenBorders.cs" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Objects/LockBlocks.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Objects/LocKey.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Objects/Bgs/Bg2.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Music/Dystopian - Distopian.ogg" type="AudioStream" id=12]
 [ext_resource path="res://Objects/Characters/SecondCharacter.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Objects/LaserPoint.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Objects/Spikes.tscn" type="PackedScene" id=15]
@@ -496,6 +497,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 4 )
+music = ExtResource( 12 )
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 11 )]
 

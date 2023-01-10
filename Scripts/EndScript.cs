@@ -37,7 +37,9 @@ public class EndScript : Sprite
     }
 
     public void EndLevel() {
+        GetNode<MusicPlayer>("/root/MusicPlayer/LevelMusic").FadePause();
         if (dialogueStart != "") {
+            GetNode<MusicPlayer>("/root/MusicPlayer/CutsceneMusic").FadeResume();
             SetProcess(false);
             ((players[0] as Node2D).GetParent() as CharacterIterator).SetCurrent(false);
             foreach(PlayerBase player in players) player.StopMoving();
@@ -52,11 +54,12 @@ public class EndScript : Sprite
 
     public void OnSignal(string value) {
         if (value != "end") return;
+        GetNode<MusicPlayer>("/root/MusicPlayer/CutsceneMusic").FadePause();
+        GetNode<MusicPlayer>("/root/MusicPlayer/LevelMusic").FadePause();
         dialogue.QueueFree();
         ChangeScene();
     }
     public void ChangeScene() {
-        GetTree().ChangeSceneTo(nextLevel);
-        //GetNode("/root/FancyFade").Call("tile_reveal", nextLevel.Instance());
+        GetNode<Transition>("/root/Transition").ChangeSceneTo(nextLevel);
     }
 }

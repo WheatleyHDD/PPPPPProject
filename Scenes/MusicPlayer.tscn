@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Music/That 90s Kid - Revenge.wav" type="AudioStream" id=1]
+[ext_resource path="res://Music/That 90s Kid - 80s Zombies Movie.wav" type="AudioStream" id=2]
+[ext_resource path="res://Scripts/MusicPlayer.cs" type="Script" id=3]
+
+[node name="MusicPlayer" type="Node2D"]
+
+[node name="LevelMusic" type="AudioStreamPlayer" parent="."]
+bus = "music"
+script = ExtResource( 3 )
+
+[node name="CutsceneMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "music"
+script = ExtResource( 3 )
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+bus = "music"
+script = ExtResource( 3 )

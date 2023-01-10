@@ -3,6 +3,7 @@ using System;
 
 public class LevelBase : Node2D
 {
+    [Export] private AudioStream music;
     private PackedScene char_iter = GD.Load<PackedScene>("res://Objects/CharacterIterator.tscn");
 
     Node level_objs;
@@ -10,6 +11,8 @@ public class LevelBase : Node2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        GetNode<MusicPlayer>("/root/MusicPlayer/LevelMusic").SetMusic(music);
+        GetNode<MusicPlayer>("/root/MusicPlayer/LevelMusic").FadeResume();
         LevelGen();
     }
 
