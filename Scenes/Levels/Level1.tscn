@@ -22,17 +22,17 @@
 [ext_resource path="res://Sprites/character2.png" type="Texture" id=20]
 [ext_resource path="res://Sounds/bleeps/bleep015.wav" type="AudioStream" id=21]
 
-[sub_resource type="Resource" id=51]
+[sub_resource type="Resource" id=64]
 script = ExtResource( 13 )
 name = "ГГ"
-text = "Давай за мной!"
+text = "Так… Где это я? Это что, моя работа? Странно…"
 voice = ExtResource( 21 )
 
-[sub_resource type="Resource" id=53]
+[sub_resource type="Resource" id=65]
 script = ExtResource( 13 )
-name = "ДД"
-text = "Прости, я не умею делать подкаты"
-voice = ExtResource( 14 )
+name = "ГГ"
+text = "Надо найти кого-нибудь!"
+voice = ExtResource( 21 )
 
 [sub_resource type="RectangleShape2D" id=50]
 extents = Vector2( 32, 224 )
@@ -908,7 +908,7 @@ position = Vector2( 288, 512 )
 __meta__ = {
 "_edit_group_": true
 }
-query = [ SubResource( 51 ), SubResource( 53 ) ]
+query = [ SubResource( 64 ), SubResource( 65 ) ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelObjects/FastDialTrigger"]
 position = Vector2( 0, -64 )

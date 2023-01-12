@@ -20,7 +20,7 @@
 [ext_resource path="res://Objects/LaserPoint2.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Objects/CheckPoint.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Objects/End.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/WIPScreen.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Levels/Level5.tscn" type="PackedScene" id=21]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -1519,7 +1519,6 @@ tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 1, -65535, 1, 1, -65534, 1, 1, -6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 640, 360 )
-current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 7 )
