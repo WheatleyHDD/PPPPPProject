@@ -38,12 +38,13 @@ public class EndScript : Sprite
 
     public void EndLevel() {
         GetNode<MusicPlayer>("/root/MusicPlayer/LevelMusic").FadePause();
+        ((players[0] as Node2D).GetParent() as CharacterIterator).SetCurrent(false);
+        foreach(PlayerBase player in players) player.StopMoving();
+        SaveSystem.SaveLevel(nextLevel.ResourcePath);
+        
         if (dialogueStart != "") {
             GetNode<MusicPlayer>("/root/MusicPlayer/CutsceneMusic").FadeResume();
             SetProcess(false);
-            ((players[0] as Node2D).GetParent() as CharacterIterator).SetCurrent(false);
-            foreach(PlayerBase player in players) player.StopMoving();
-
             if (spawnDoor) dObj.Play("open");
 
             dialogue = DialogicSharp.Start(dialogueStart);
