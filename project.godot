@@ -96,6 +96,7 @@ FastDialogue="*res://Singletons/FastDialogue.tscn"
 Pause="*res://Scenes/Pause.tscn"
 Transition="*res://Scenes/Transition.tscn"
 MusicPlayer="*res://Scenes/MusicPlayer.tscn"
+Settings="*res://Scenes/Settings.tscn"
 
 [display]
 

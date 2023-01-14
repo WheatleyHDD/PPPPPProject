@@ -1,0 +1,63 @@
+[gd_resource type="Theme" load_steps=14 format=2]
+
+[ext_resource path="res://Fonts/Buttons.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Sprites/ui_button.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/slider_texture.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/SliderPimpochka/focus.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/SliderPimpochka/default.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/SliderPimpochka/disabled.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxTexture" id=13]
+content_margin_bottom = 6.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 132, 22 )
+modulate_color = Color( 1, 1, 1, 0.392157 )
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxTexture" id=14]
+content_margin_bottom = 6.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 132, 22 )
+modulate_color = Color( 0.737255, 0.737255, 0.737255, 1 )
+
+[sub_resource type="StyleBoxTexture" id=15]
+content_margin_bottom = 6.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 132, 22 )
+
+[sub_resource type="StyleBoxTexture" id=16]
+content_margin_bottom = 6.0
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 132, 22 )
+modulate_color = Color( 0.505882, 0.505882, 0.505882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=17]
+bg_color = Color( 0.2, 0.2, 0.2, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxTexture" id=18]
+texture = ExtResource( 3 )
+region_rect = Rect2( 0, 4, 260, 15 )
+margin_left = 260.0
+margin_right = 260.0
+margin_bottom = 85.3186
+
+[resource]
+Button/colors/font_color = Color( 1, 1, 1, 1 )
+Button/colors/font_color_disabled = Color( 1, 1, 1, 0.392157 )
+Button/fonts/font = ExtResource( 1 )
+Button/styles/disabled = SubResource( 13 )
+Button/styles/focus = SubResource( 12 )
+Button/styles/hover = SubResource( 14 )
+Button/styles/normal = SubResource( 15 )
+Button/styles/pressed = SubResource( 16 )
+HSlider/icons/grabber = ExtResource( 5 )
+HSlider/icons/grabber_disabled = ExtResource( 6 )
+HSlider/icons/grabber_highlight = ExtResource( 4 )
+HSlider/styles/grabber_area = SubResource( 17 )
+HSlider/styles/grabber_area_highlight = SubResource( 17 )
+HSlider/styles/slider = SubResource( 18 )

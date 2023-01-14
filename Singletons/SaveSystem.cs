@@ -26,13 +26,9 @@ public static class SaveSystem
     // ============ SETTING SAVING ==============
     // ==========================================
     const string settingSavePath = "user://settings.dat";
-    public static SettingsData Settings
-    { 
-        get { return Settings; }
-        private set { Settings = value; }
-    }
+    public static SettingsData Settings { get; private set; }
 
-    public static void SaveSettings(string lvlName) {
+    public static void SaveSettings() {
         var f = new File();
         f.Open(settingSavePath, File.ModeFlags.Write);
         f.StoreVar(Settings);
@@ -40,8 +36,10 @@ public static class SaveSystem
     }
 
     public static void LoadSettings() {
+        Settings = new SettingsData();
         var f = new File();
-        f.Open(settingSavePath, File.ModeFlags.Read);
+        var err = f.Open(settingSavePath, File.ModeFlags.Read);
+        if (err != Error.Ok) return;
         Settings = f.GetVar() as SettingsData;
         f.Close();
     }
@@ -55,4 +53,8 @@ public class SettingsData {
     public void SetMusicVolume(float value) => musicVolume = value;
     public void SetSoundVolume(float value) => soundVolume = value;
     public void SetFullscreen(bool value) => fullscreen = value;
+
+    public string GetDataToSave() {
+        return "";
+    }
 }
