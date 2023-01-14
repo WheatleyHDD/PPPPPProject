@@ -7,6 +7,7 @@ public class TempMenu : Control
     public override void _Ready()
     {
         GetNode<MusicPlayer>("/root/MusicPlayer/MenuMusic").Resume();
+        GetNode<Godot.Button>("%ContinueButton").Disabled = !SaveSystem.HasLevel();
 
         GetNode<Godot.Button>("%ContinueButton").Connect("pressed", this, "ContinuePressed");
         GetNode<Godot.Button>("%PlayButton").Connect("pressed", this, "PlayPressed");

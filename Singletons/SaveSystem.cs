@@ -23,6 +23,12 @@ public static class SaveSystem
         return result;
     }
 
+    public static bool HasLevel() {
+        var d = new Directory();
+        if (!d.FileExists(lvlSavePath)) return false;
+        return ResourceLoader.Exists(LoadLevel());
+    }
+
     // ==========================================
     // ============ SETTING SAVING ==============
     // ==========================================
