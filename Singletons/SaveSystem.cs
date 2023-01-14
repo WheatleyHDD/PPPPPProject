@@ -55,6 +55,6 @@ public class SettingsData {
     public void SetFullscreen(bool value) => fullscreen = value;
 
     public string GetDataToSave() {
-        return "";
+        return "TODO";
     }
 }
