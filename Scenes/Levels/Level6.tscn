@@ -1233,6 +1233,7 @@ OffTime = 1.0
 [node name="End" parent="LevelObjects/room5" instance=ExtResource( 24 )]
 position = Vector2( 5760, 80 )
 scale = Vector2( 2, 1.5 )
+dialogueStart = "/cutscene6"
 nextLevel = ExtResource( 26 )
 spawnDoor = true
 

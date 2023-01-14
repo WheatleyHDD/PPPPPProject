@@ -12,6 +12,7 @@ public class TempMenu : Control
         GetNode<Godot.Button>("%ContinueButton").Connect("pressed", this, "ContinuePressed");
         GetNode<Godot.Button>("%PlayButton").Connect("pressed", this, "PlayPressed");
         GetNode<Godot.Button>("%SettingsButton").Connect("pressed", this, "SettingsPressed");
+        GetNode<Godot.Button>("%CreditsButton").Connect("pressed", this, "CreditsPressed");
         GetNode<Godot.Button>("%ExitButton").Connect("pressed", this, "ExitPressed");
         
         GetNode<Godot.Button>("%StartNewGameButton").Connect("pressed", this, "NewGameComfirmed");
@@ -21,6 +22,7 @@ public class TempMenu : Control
     public void PlayPressed() => GetNode<AnimationPlayer>("StartNewGamePanel/AnimationPlayer").Play("show");
     public void ContinuePressed() => GoToLevel(SaveSystem.LoadLevel());
     public void SettingsPressed() => GetNode<SettingsScreen>("/root/Settings").ShowThisShit();
+    public void CreditsPressed() => GoToLevel("res://Scenes/WIPScreen.tscn");
 
     public void ExitPressed() {
         GetTree().Quit();

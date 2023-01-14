@@ -20,7 +20,7 @@
 [ext_resource path="res://Objects/LaserPoint.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Objects/Button.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Objects/End.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/WIPScreen.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Scenes/Levels/Level6.tscn" type="PackedScene" id=21]
 [ext_resource path="res://Scripts/Resources/FastDialogueContainer.gd" type="Script" id=22]
 [ext_resource path="res://Objects/FastDialTrigger.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Sounds/bleeps/bleep015.wav" type="AudioStream" id=24]
@@ -1345,7 +1345,6 @@ tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 1, -65535, 1, 1, -65534, 1, 1, -6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 640, 1080 )
-current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 7 )

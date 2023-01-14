@@ -1,48 +1,91 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Fonts/BeVietnamPro-Regular.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://Themes/MenuItems.tres" type="Theme" id=2]
+[ext_resource path="res://Fonts/Charis_SIL/CharisSIL-Italic.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Fonts/Charis_SIL/CharisSIL-Bold.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Fonts/Charis_SIL/CharisSIL-Regular.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Themes/UI.tres" type="Theme" id=4]
+[ext_resource path="res://Scripts/CreditsScreen.cs" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
-size = 52
+size = 39
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 21
 font_data = ExtResource( 1 )
 
-[sub_resource type="GDScript" id=2]
-script/source = "extends Button
+[sub_resource type="DynamicFont" id=3]
+size = 21
+font_data = ExtResource( 2 )
 
-
-func _on_Button_pressed():
-	get_tree().change_scene(\"res://Scenes/TempMenu.tscn\")
-"
+[sub_resource type="DynamicFont" id=4]
+size = 21
+font_data = ExtResource( 3 )
 
 [node name="WIPScreen" type="ColorRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
+script = ExtResource( 5 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -211.5
-margin_right = 211.5
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-margin_top = 301.0
-margin_right = 423.0
-margin_bottom = 367.0
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 32.0
+margin_bottom = 97.0
 custom_fonts/font = SubResource( 1 )
-text = "Work In Progress"
+text = "Спасибо за игру!"
 align = 1
 valign = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
-margin_top = 371.0
-margin_right = 423.0
-margin_bottom = 419.0
-theme = ExtResource( 2 )
-text = "В меню"
-script = SubResource( 2 )
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 192.0
+margin_top = 128.0
+margin_right = -192.0
+margin_bottom = -72.0
+custom_fonts/italics_font = SubResource( 2 )
+custom_fonts/bold_font = SubResource( 3 )
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center][b]Разработчики: Команда №4414[/b]
+Скапинцева Виктория (Руководитель проекта)
+Волков Дмитрий (Программирование)
+Исангузин Ильдар (Дизайн)
+Сергеева Мария (Сценарий и диалоги)
+Крысин Никита (Аналитика)
 
-[connection signal="pressed" from="VBoxContainer/Button" to="VBoxContainer/Button" method="_on_Button_pressed"]
+[b]Использованная музыка:[/b]
+That 90s Kid - Revenge
+That 90s Kid - 80s Zombies Movie
+Alexander Ehlers - Warped
+Dystopian - Distopian
+Dystopian - The Protagonist
+[/center]"
+text = "Разработчики: Команда №4414
+Скапинцева Виктория (Руководитель проекта)
+Волков Дмитрий (Программирование)
+Исангузин Ильдар (Дизайн)
+Сергеева Мария (Сценарий и диалоги)
+Крысин Никита (Аналитика)
+
+Использованная музыка:
+That 90s Kid - Revenge
+That 90s Kid - 80s Zombies Movie
+Alexander Ehlers - Warped
+Dystopian - Distopian
+Dystopian - The Protagonist
+"
+
+[node name="BackToMenuButton" type="Button" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -128.0
+margin_top = -80.0
+margin_right = 128.0
+margin_bottom = -29.0
+theme = ExtResource( 4 )
+text = "Назад"
