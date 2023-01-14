@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 
 public static class SaveSystem
 {
@@ -26,7 +27,7 @@ public static class SaveSystem
     // ============ SETTING SAVING ==============
     // ==========================================
     const string settingSavePath = "user://settings.dat";
-    public static SettingsData Settings { get; private set; }
+    public static Dictionary Settings { get; set; } = new Dictionary();
 
     public static void SaveSettings() {
         var f = new File();
@@ -36,25 +37,15 @@ public static class SaveSystem
     }
 
     public static void LoadSettings() {
-        Settings = new SettingsData();
+        Settings.Add("music_vol", 1f);
+        Settings.Add("sound_vol", 1f);
+        Settings.Add("fullscreen", false);
+
         var f = new File();
         var err = f.Open(settingSavePath, File.ModeFlags.Read);
         if (err != Error.Ok) return;
-        Settings = f.GetVar() as SettingsData;
+
+        Settings = f.GetVar() as Dictionary;
         f.Close();
-    }
-}
-
-public class SettingsData {
-    public float musicVolume = 1;
-    public float soundVolume = 1;
-    public bool fullscreen = false;
-
-    public void SetMusicVolume(float value) => musicVolume = value;
-    public void SetSoundVolume(float value) => soundVolume = value;
-    public void SetFullscreen(bool value) => fullscreen = value;
-
-    public string GetDataToSave() {
-        return "TODO";
     }
 }

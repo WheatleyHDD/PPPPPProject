@@ -6,10 +6,13 @@ public class SettingsScreen : CanvasLayer
     public override void _Ready()
     {
         SaveSystem.LoadSettings();
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("sound"), GD.Linear2Db(SaveSystem.Settings.soundVolume));
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("music"), GD.Linear2Db(SaveSystem.Settings.musicVolume));
-        GetNode<Slider>("%SoundVolume").Value = SaveSystem.Settings.soundVolume;
-        GetNode<Slider>("%MusicVolume").Value = SaveSystem.Settings.musicVolume;
+
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("sound"), GD.Linear2Db((float)SaveSystem.Settings["sound_vol"]));
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("music"), GD.Linear2Db((float)SaveSystem.Settings["music_vol"]));
+        OS.WindowFullscreen = (bool)SaveSystem.Settings["fullscreen"];
+
+        GetNode<Slider>("%SoundVolume").Value = (float)SaveSystem.Settings["sound_vol"];
+        GetNode<Slider>("%MusicVolume").Value = (float)SaveSystem.Settings["music_vol"];
 
         GetNode<Slider>("%SoundVolume").Connect("drag_ended", this, "SoundChanged");
         GetNode<Slider>("%MusicVolume").Connect("drag_ended", this, "MusicChanged");
@@ -30,19 +33,19 @@ public class SettingsScreen : CanvasLayer
     public void OnClose() => HideThisShit();
     public void FullscreenChange() {
         OS.WindowFullscreen = !OS.WindowFullscreen;
-        SaveSystem.Settings.SetFullscreen(OS.WindowFullscreen);
+        SaveSystem.Settings["fullscreen"] = OS.WindowFullscreen;
         SaveSystem.SaveSettings();
     }
 
     public void SoundChanged(float value) {
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("sound"), GD.Linear2Db(value));
-        SaveSystem.Settings.SetSoundVolume(value);
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("sound"), GD.Linear2Db((float)GetNode<Slider>("%SoundVolume").Value));
+        SaveSystem.Settings["sound_vol"] = value;
         SaveSystem.SaveSettings();
     }
 
     public void MusicChanged(float value) {
-        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("music"), GD.Linear2Db(value));
-        SaveSystem.Settings.SetMusicVolume(value);
+        AudioServer.SetBusVolumeDb(AudioServer.GetBusIndex("music"), GD.Linear2Db((float)GetNode<Slider>("%MusicVolume").Value));
+        SaveSystem.Settings["music_vol"] = value;
         SaveSystem.SaveSettings();
     }
 }

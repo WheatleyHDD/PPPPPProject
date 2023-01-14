@@ -9,6 +9,7 @@ public class PauseScreen : CanvasLayer
     {
         GetNode<BaseButton>("%PauseResume").Connect("pressed", this, "ButtonsResume");
         GetNode<BaseButton>("%PauseRestart").Connect("pressed", this, "ButtonsRestart");
+        GetNode<BaseButton>("%PauseSettings").Connect("pressed", this, "ButtonsSettings");
         GetNode<BaseButton>("%PauseExit").Connect("pressed", this, "ButtonsExit");
     }
 
@@ -44,5 +45,8 @@ public class PauseScreen : CanvasLayer
         GetTree().ChangeScene("res://Scenes/TempMenu.tscn");
         GetTree().Paused = false;
         Visible = false;
+        GetNode<FastDialogue>("/root/FastDialogue").StopAll();
     }
+
+    public void ButtonsSettings() => GetNode<SettingsScreen>("/root/Settings").ShowThisShit();
 }
