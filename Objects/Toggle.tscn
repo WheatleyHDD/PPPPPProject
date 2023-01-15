@@ -76,7 +76,7 @@ shape = SubResource( 4 )
 
 [node name="Lever" type="Sprite" parent="."]
 position = Vector2( 6, 16 )
-rotation = 0.785397
+rotation = 0.785396
 texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 region_enabled = true
