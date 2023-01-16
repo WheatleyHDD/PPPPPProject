@@ -31,13 +31,13 @@
 
 [sub_resource type="Resource" id=64]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Так… Где это я? Это что, моя работа? Странно…"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=65]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Надо найти кого-нибудь!"
 voice = ExtResource( 21 )
 
@@ -46,43 +46,43 @@ extents = Vector2( 32, 224 )
 
 [sub_resource type="Resource" id=57]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Я думаю тут можно пролезть"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=58]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Вот бы здесь как в играх можно было сделать подкат нажатием стрелки ВНИЗ"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=59]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Откуда вообще эти ловушки? Какие-то двери, лазеры…"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=60]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Даже когда я в них попадаю все начинается заново! Безумие какое-то…"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=61]
 script = ExtResource( 13 )
-name = "ДД"
+name = "Том"
 text = "ПОМОГИТЕ!!!"
 voice = ExtResource( 14 )
 
 [sub_resource type="Resource" id=62]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Ты кто еще такой? И п-почему ты похож на меня?!"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=63]
 script = ExtResource( 13 )
-name = "ДД"
+name = "Том"
 text = "Ну… А лучше ты поможешь мне выбраться отсюда"
 voice = ExtResource( 14 )
 

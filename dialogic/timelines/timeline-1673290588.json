@@ -1,7 +1,7 @@
 {
 	"events": [
 		{
-			"background": "res://Sprites/backgrounds/sklad_vn.png",
+			"background": "res://Sprites/backgrounds/personal room c day.png",
 			"event_id": "dialogic_021"
 		},
 		{

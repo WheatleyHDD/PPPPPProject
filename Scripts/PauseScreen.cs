@@ -45,6 +45,7 @@ public class PauseScreen : CanvasLayer
         GetTree().ChangeScene("res://Scenes/TempMenu.tscn");
         GetTree().Paused = false;
         Visible = false;
+        GetNode<MusicPlayer>("/root/MusicPlayer/LevelMusic").FadePause();
         GetNode<FastDialogue>("/root/FastDialogue").StopAll();
     }
 

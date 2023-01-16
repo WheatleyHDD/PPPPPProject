@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://Sprites/solid.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/LevelBuilder/HelperScreenBorders.cs" type="Script" id=2]
@@ -26,10 +26,11 @@
 [ext_resource path="res://Objects/End.tscn" type="PackedScene" id=24]
 [ext_resource path="res://Sounds/bleeps/bleep020.wav" type="AudioStream" id=25]
 [ext_resource path="res://Scenes/WIPScreen.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Objects/Bgs/Bg3.tscn" type="PackedScene" id=27]
 
 [sub_resource type="Resource" id=53]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Кажется, я понял. Понял, почему здесь и кто ты."
 voice = ExtResource( 15 )
 
@@ -38,43 +39,43 @@ extents = Vector2( 32, 384 )
 
 [sub_resource type="Resource" id=54]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Я сам загнал себя в ловушку."
 voice = ExtResource( 15 )
 
 [sub_resource type="Resource" id=55]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Работаю на работе, которая мне не нравится..."
 voice = ExtResource( 15 )
 
 [sub_resource type="Resource" id=60]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "...разговариваю с людьми, которые мне неприятны."
 voice = ExtResource( 15 )
 
 [sub_resource type="Resource" id=56]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "Каждый день я надеюсь, что что-то изменится..."
 voice = ExtResource( 15 )
 
 [sub_resource type="Resource" id=59]
 script = ExtResource( 13 )
-name = "ГГ"
+name = "Тим"
 text = "не прикладывая для этого никаких усилий…"
 voice = ExtResource( 15 )
 
 [sub_resource type="Resource" id=57]
 script = ExtResource( 13 )
-name = "ДД"
+name = "Том"
 text = "Ты это понял и я очень рад за тебя."
 voice = ExtResource( 25 )
 
 [sub_resource type="Resource" id=58]
 script = ExtResource( 13 )
-name = "ДД"
+name = "Том"
 text = "Я верю в тебя и в твою возможность начать работать над собой."
 voice = ExtResource( 25 )
 
@@ -554,6 +555,8 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="LevelBase" type="Node2D"]
 script = ExtResource( 4 )
 music = ExtResource( 23 )
+
+[node name="ParallaxBackground" parent="." instance=ExtResource( 27 )]
 
 [node name="LevelHelpers" type="Node2D" parent="."]
 

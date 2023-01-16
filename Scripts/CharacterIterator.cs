@@ -6,11 +6,17 @@ public class CharacterIterator : Node2D
     public int current_char = 0;
     public CameraMovement camera;
     private Listener2D listener;
+    private AudioStreamPlayer changeControlSound;
     public bool LevelChanging = false;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        changeControlSound = new AudioStreamPlayer();
+        GetParent().CallDeferred("add_child", changeControlSound);
+        changeControlSound.Stream = GD.Load<AudioStream>("res://Sounds/change_control.wav");
+        changeControlSound.Bus = "sound";
+
         listener = new Listener2D();
         GetParent().CallDeferred("add_child", listener);
         listener.MakeCurrent();
@@ -40,6 +46,7 @@ public class CharacterIterator : Node2D
 
     void NextCharacter() {
         var char_count = GetChildCount() - 1;
+        if (char_count > 0) changeControlSound.Play();
         SetCurrent(false);
         if (current_char < char_count)
             current_char += 1;
@@ -49,6 +56,7 @@ public class CharacterIterator : Node2D
 
     void PrevCharacter() {
         var char_count = GetChildCount() - 1;
+        if (char_count > 0) changeControlSound.Play();
         SetCurrent(false);
         if (current_char > 0)
             current_char -= 1;

@@ -26,13 +26,13 @@
 
 [sub_resource type="Resource" id=50]
 script = ExtResource( 15 )
-name = "ДД"
+name = "Том"
 text = "Что последнее ты помнишь?"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=51]
 script = ExtResource( 15 )
-name = "ГГ"
+name = "Тим"
 text = "Пришел домой, играл, а потом уснул."
 voice = ExtResource( 22 )
 

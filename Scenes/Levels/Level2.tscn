@@ -30,25 +30,25 @@
 
 [sub_resource type="Resource" id=51]
 script = ExtResource( 16 )
-name = "ГГ"
+name = "Тим"
 text = "Давай за мной!"
 voice = ExtResource( 20 )
 
 [sub_resource type="Resource" id=53]
 script = ExtResource( 16 )
-name = "ДД"
+name = "Том"
 text = "Прости, я не умею делать подкаты"
 voice = ExtResource( 21 )
 
 [sub_resource type="Resource" id=55]
 script = ExtResource( 16 )
-name = "ГГ"
+name = "Тим"
 text = "Но как мы выберемся отсюда?"
 voice = ExtResource( 20 )
 
 [sub_resource type="Resource" id=56]
 script = ExtResource( 16 )
-name = "ГГ"
+name = "Том"
 text = "Только если ты сможешь ДВА РАЗА прыгнуть"
 voice = ExtResource( 20 )
 
@@ -57,7 +57,7 @@ extents = Vector2( 32, 224 )
 
 [sub_resource type="Resource" id=57]
 script = ExtResource( 16 )
-name = "ГГ"
+name = "Тим"
 text = "Погоди, это как?"
 voice = ExtResource( 20 )
 

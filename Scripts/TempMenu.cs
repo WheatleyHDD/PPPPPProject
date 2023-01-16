@@ -35,4 +35,22 @@ public class TempMenu : Control
 
     public void NewGameComfirmed() => GoToLevel("res://Scenes/Levels/Level1.tscn");
     public void NewGameCanceled() => GetNode<AnimationPlayer>("StartNewGamePanel/AnimationPlayer").Play("hide");
+
+    public override void _Process(float delta)
+    {
+        if (OS.IsDebugBuild()) Cheats();
+        else if (OS.HasFeature("dev")) Cheats();
+    }
+
+    void Cheats() {
+        if (Input.IsActionPressed("cheat_menu"))
+        {
+            if (Input.IsPhysicalKeyPressed((int)KeyList.Key1)) GoToLevel("res://Scenes/Levels/Level1.tscn");
+            if (Input.IsPhysicalKeyPressed((int)KeyList.Key2)) GoToLevel("res://Scenes/Levels/Level2.tscn");
+            if (Input.IsPhysicalKeyPressed((int)KeyList.Key3)) GoToLevel("res://Scenes/Levels/Level3.tscn");
+            if (Input.IsPhysicalKeyPressed((int)KeyList.Key4)) GoToLevel("res://Scenes/Levels/Level4.tscn");
+            if (Input.IsPhysicalKeyPressed((int)KeyList.Key5)) GoToLevel("res://Scenes/Levels/Level5.tscn");
+            if (Input.IsPhysicalKeyPressed((int)KeyList.Key6)) GoToLevel("res://Scenes/Levels/Level6.tscn");
+        }
+    }
 }

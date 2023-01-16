@@ -1519,6 +1519,7 @@ tile_data = PoolIntArray( -1, 1, 0, -65536, 1, 1, -65535, 1, 1, -65534, 1, 1, -6
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 640, 360 )
+current = true
 smoothing_enabled = true
 smoothing_speed = 10.0
 script = ExtResource( 7 )
